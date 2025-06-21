@@ -1,0 +1,46 @@
+@use './index' as *;
+@use './variables' as vars;
+@use './mixins' as mixins;
+@use './globals' as globals;
+@use './buttons' as buttons;
+
+.hero {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 6rem 2rem;
+    background-color: vars.$color-base-bg;
+    color: vars.$color-text-main;
+
+    h1 {
+        font-family: vars.$font-title;
+        font-size: 2rem;
+        margin-bottom: 1rem;
+        text-transform: uppercase;
+        letter-spacing: $letter-spacing-headings;
+        color: vars.$color-text-main;
+    }
+
+    p {
+        font-family: vars.$font-family-base;
+        font-size: 1.25rem;
+        max-width: 700px;
+        margin: 0 auto;
+        color: vars.$color-grey-dark;
+    }
+
+    .cta-button {
+        margin-top: 2rem;
+    }
+    @include mixins.mobile {
+        font-size: 2rem;
+        padding: 2rem;
+        h1 {
+            font-size: 2rem;
+            letter-spacing: 0.2rem;
+        }
+    }
+
+}

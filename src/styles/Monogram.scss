@@ -1,0 +1,17 @@
+@use './variables' as v;
+
+.monogram {
+    width: 1.5rem;
+    height: auto;
+    display: block;
+    cursor: pointer;
+
+    .monogram-shape {
+        fill: v.$color-grey-dark; // color base
+        transition: fill 0.3s ease;
+    }
+
+    &:hover .monogram-shape {
+        fill: v.$color-accent-sage; // 
+    }
+}

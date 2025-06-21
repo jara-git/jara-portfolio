@@ -1,0 +1,86 @@
+@charset "UTF-8";
+/*Rol en UI Color Hex Comentario Fondo base Blanco cálido #F9F6F0 Luminoso y suave,
+da calidez Texto principal Gris oscuro #1A1A1A Legible y elegante 
+Texto secundario Gris medio #5C5C5C Neutro y no intrusivo 
+Color de énfasis Coral suave #D88F70 Para ilustraciones,
+botones clave Hover/acento Verde salvia #BFC8B2 Refrescante,
+menos visto 
+Links activos Azul grisáceo #A8BCC9 Tranquilo pero reconocible 
+Fondo de secciones Crema claro #F3EBDD Para bloques o tarjetas 
+Borde o detalle Oro viejo #C1A46A 
+Líneas finas o iconos decorativos Elemento UI Color sugerido Títulos #1A1A1A (o #3A2E2E si quieres un toque más cálido) 
+Texto #5C5C5C o #4B4B4B 
+Botones primarios Fondo #D88F70+texto blanco (#FFFFFF) 
+Botones hover #B25E48 (versión más intensa del coral)
+Botones secundarios Borde #D88F70,texto #D88F70,fondo transparente
+Hover en links #A8BCC9 (azul grisáceo claro) 
+Iconos activos #C1A46A (oro suave)*/
+.drawer-open .navbar {
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0.5;
+}
+
+.navbar {
+  position: sticky;
+  top: 0;
+  background-color: #F9F6F0;
+  padding: 3.125rem 3.75rem 0;
+  z-index: 1000;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+@media (max-width: 480px) {
+  .navbar {
+    padding: 1.25rem 1.875rem 0;
+    flex-direction: row;
+    align-content: center;
+  }
+}
+.navbar .logo-container {
+  display: flex;
+  align-items: center;
+}
+.navbar .logo {
+  height: 32px;
+  width: auto;
+}
+.navbar .nav-links {
+  display: flex;
+  gap: 2rem;
+}
+.navbar .nav-links a {
+  font-family: "Century Gothic", CenturyGothic, AppleGothic, sans-serif;
+  color: #5C5C5C;
+  text-decoration: none;
+  font-weight: 400;
+  position: relative;
+  padding-bottom: 0.9rem;
+  transition: all 0.3s ease;
+}
+.navbar .nav-links a::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%) scaleX(0);
+  transform-origin: center;
+  bottom: 0;
+  width: 1.2rem;
+  height: 1.5px;
+  background-color: #5C5C5C;
+  opacity: 0;
+  transition: all 0.3s ease;
+}
+.navbar .nav-links a:hover::after {
+  opacity: 1;
+  transform: translateX(-50%) scaleX(1);
+}
+.navbar .nav-links a.active {
+  font-weight: 800;
+  color: #BFC8B2;
+}
+.navbar .nav-links a.active::after {
+  background-color: #BFC8B2;
+  opacity: 1;
+}/*# sourceMappingURL=Navbar.css.map */

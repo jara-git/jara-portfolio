@@ -1,0 +1,38 @@
+// _mixins.scss
+@use './variables' as vars;
+
+// —— Medias ——
+@mixin mobile {
+    @media (max-width: #{vars.$breakpoint-mobile}) {
+        @content;
+    }
+}
+
+@mixin tablet {
+    @media (min-width: #{vars.$breakpoint-mobile + 1}) and (max-width: #{vars.$breakpoint-tablet}) {
+        @content;
+    }
+}
+
+@mixin desktop {
+    @media (min-width: #{vars.$breakpoint-tablet + 1}) {
+        @content;
+    }
+}
+
+// —— Utilities ——
+@mixin flex-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+@mixin text-ellipsis {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+@mixin smooth {
+    transition: all .25s ease;
+}

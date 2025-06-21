@@ -1,0 +1,85 @@
+@use './index' as *;
+@use './variables' as vars;
+@use './mixins' as mixins;
+@use './buttons' as buttons;
+
+h1,
+h2,
+h3 {
+    font-family: vars.$font-title;
+    font-weight: vars.$font-weight-semibold;
+    letter-spacing: vars.$letter-spacing-base;
+}
+
+h1 {
+    font-size: 2.5rem;
+
+    @include mixins.mobile {
+        font-size: 1.8rem;
+    }
+}
+
+h2 {
+    font-size: 2rem;
+
+    @include mixins.mobile {
+        font-size: 1.5rem;
+    }
+}
+
+h3 {
+    font-size: 1.5rem;
+
+    @include mixins.mobile {
+        font-size: 1.2rem;
+    }
+}
+
+body,
+p {
+    font-family: vars.$font-family-base;
+    font-weight: 400;
+    font-size: 1rem;
+    line-height: 1.6;
+    color: vars.$color-grey-dark;
+    letter-spacing: vars.$letter-spacing-base;
+
+    @include mixins.mobile {
+        font-size: 0.9rem;
+    }
+}
+
+button {
+    font-family: vars.$font-family-base;
+    font-weight: 600;
+    font-size: 1rem;
+    padding: 0.75rem 1.5rem;
+    background-color: vars.$color-text-secondary;
+    color: white;
+    border: none;
+    border-radius: 0.25rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    letter-spacing: vars.$letter-spacing-base;
+
+    @include mixins.mobile {
+        font-size: 0.9rem;
+        padding: 0.6rem 1.2rem;
+    }
+
+    &:hover {
+        background-color: vars.$color-accent-sage;
+    }
+}
+
+.subtitle {
+    font-family: vars.$font-family-base;
+    font-style: italic;
+    font-size: 0.875rem;
+    color: vars.$color-text-secondary;
+    letter-spacing: vars.$letter-spacing-base;
+
+    @include mixins.mobile {
+        font-size: 0.75rem;
+    }
+}

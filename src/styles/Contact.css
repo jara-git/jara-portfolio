@@ -1,0 +1,41 @@
+@charset "UTF-8";
+/*Rol en UI Color Hex Comentario Fondo base Blanco cálido #F9F6F0 Luminoso y suave,
+da calidez Texto principal Gris oscuro #1A1A1A Legible y elegante 
+Texto secundario Gris medio #5C5C5C Neutro y no intrusivo 
+Color de énfasis Coral suave #D88F70 Para ilustraciones,
+botones clave Hover/acento Verde salvia #BFC8B2 Refrescante,
+menos visto 
+Links activos Azul grisáceo #A8BCC9 Tranquilo pero reconocible 
+Fondo de secciones Crema claro #F3EBDD Para bloques o tarjetas 
+Borde o detalle Oro viejo #C1A46A 
+Líneas finas o iconos decorativos Elemento UI Color sugerido Títulos #1A1A1A (o #3A2E2E si quieres un toque más cálido) 
+Texto #5C5C5C o #4B4B4B 
+Botones primarios Fondo #D88F70+texto blanco (#FFFFFF) 
+Botones hover #B25E48 (versión más intensa del coral)
+Botones secundarios Borde #D88F70,texto #D88F70,fondo transparente
+Hover en links #A8BCC9 (azul grisáceo claro) 
+Iconos activos #C1A46A (oro suave)*/
+.contact-section {
+  padding: 4rem 2rem;
+  background-color: #fff;
+  text-align: center;
+}
+.contact-section h2 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+.contact-section p {
+  font-size: 1.125rem;
+  margin-bottom: 1.5rem;
+}
+.contact-section .contact-button {
+  background-color: #000;
+  color: #fff;
+  padding: 0.75rem 1.5rem;
+  border-radius: 4px;
+  text-decoration: none;
+  transition: background 0.3s;
+}
+.contact-section .contact-button:hover {
+  background-color: #333;
+}/*# sourceMappingURL=Contact.css.map */

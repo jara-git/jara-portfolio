@@ -1,0 +1,90 @@
+// ------------------------------
+//  Design tokens  ·  Botticelli
+// ------------------------------
+
+// Core palette
+$color-base-bg: #F9F6F0; // warm white  (antes $color-background)
+$color-section-bg: #F3EBDD; // light cream (cards / alt sections)
+$color-white: #faf8f4;
+
+$color-text-main: #1A1A1A; // before $color-black
+$color-text-secondary: #5C5C5C; // before $color-grey-medium
+$color-grey-dark: #323232;
+$color-black: $color-text-main;
+
+$color-accent-coral: #D88F70; // CTA / highlight
+$color-accent-coral-hov: #B25E48;
+$color-accent-sage: #BFC8B2; // subtle hover / focus
+$color-link: #A8BCC9; // normal links-hover
+$color-gold: #C1A46A; // decorative / icons
+
+
+
+// Semantic tags
+$color-role: $color-accent-coral; // role pill
+$color-tool: $color-accent-sage; // tool pill
+$color-tag: $color-text-secondary; // generic tag pill
+
+// Buttons
+$color-bg-primary-button: $color-accent-coral;  //text (#FFFFFF)
+$color-bg-secondary-button: #5c5c5c07; //Border #D88F70, text #D88F70
+
+
+// Utility (status)
+$color-success: #B8C6A3;
+$color-warning: #E0B070;
+$color-error: #D26A5E;
+
+// Typography
+$font-family-base: 'Century Gothic', CenturyGothic, AppleGothic, sans-serif;
+$font-title: $font-family-base;
+$font-weight-normal: 400;
+$font-weight-semibold: 600;
+$font-weight-bold: 800;
+
+$letter-spacing-base: 0.03em;
+$letter-spacing-headings: 0.1em;
+
+
+
+//Border radius
+$border-radius: 0.375rem;
+$radius-s: 4px;
+$radius-m: 8px;
+$radius-l: 12px;
+
+// Spacing
+
+$space-1: .5rem;
+$space-2: 1rem;
+$space-3: 1.5rem;
+$space-4: 2rem;
+$spacing-unit: $space-2;
+
+// --- Breakpoints 
+$breakpoint-mobile: 480px; // ≤480 px
+$breakpoint-tablet: 768px; // 481-768 px
+$breakpoint-desktop: 1024px; // ≥1025 px
+
+
+
+
+
+
+
+/*Rol en UI Color Hex Comentario Fondo base Blanco cálido #F9F6F0 Luminoso y suave,
+da calidez Texto principal Gris oscuro #1A1A1A Legible y elegante 
+Texto secundario Gris medio #5C5C5C Neutro y no intrusivo 
+Color de énfasis Coral suave #D88F70 Para ilustraciones,
+botones clave Hover/acento Verde salvia #BFC8B2 Refrescante,
+menos visto 
+Links activos Azul grisáceo #A8BCC9 Tranquilo pero reconocible 
+Fondo de secciones Crema claro #F3EBDD Para bloques o tarjetas 
+Borde o detalle Oro viejo #C1A46A 
+Líneas finas o iconos decorativos Elemento UI Color sugerido Títulos #1A1A1A (o #3A2E2E si quieres un toque más cálido) 
+Texto #5C5C5C o #4B4B4B 
+Botones primarios Fondo #D88F70+texto blanco (#FFFFFF) 
+Botones hover #B25E48 (versión más intensa del coral)
+Botones secundarios Borde #D88F70,texto #D88F70,fondo transparente
+Hover en links #A8BCC9 (azul grisáceo claro) 
+Iconos activos #C1A46A (oro suave)*/

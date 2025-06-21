@@ -1,0 +1,148 @@
+@use "./variables" as v;
+@use "./mixins" as mx;
+
+.projects-section {
+    padding: v.$space-2 * 4 v.$space-2 * 2;
+    background: v.$color-base-bg;
+
+    h2 {
+        font-family: v.$font-family-base;
+        font-size: 2rem;
+        font-weight: v.$font-weight-semibold;
+        letter-spacing: 0.08em;
+        color: v.$color-text-main;
+        margin-bottom: v.$space-2 * 1.5;
+
+        @include mx.mobile {
+            font-size: 1.5rem;
+            letter-spacing: 0.06em;
+        }
+    }
+
+    // -------- Horizontal scroll wrapper --------
+    .scroll-container {
+        overflow-x: auto;
+        scroll-snap-type: x mandatory; // enable snap
+        -webkit-overflow-scrolling: touch;
+        position: relative;
+        overflow-x: auto;
+        overflow-y: hidden;
+        padding: v.$space-2 0;
+        scroll-behavior: smooth;
+        display: flex;
+        align-items: center;
+    }
+
+    .project-row {
+        display: flex;
+        gap: v.$space-2 * 2;
+        padding: 0 v.$space-2 * 2;
+        align-items: flex-start;
+
+        @include mx.mobile {
+            padding: 0;
+        }
+    }
+
+    // -------- Individual card --------
+    .project-card {
+        scroll-snap-align: start;
+        height: auto;
+        position: relative;
+        flex: 0 0 300px;
+        max-height: 480px;
+        min-height: 320px;
+        max-width: 300px;
+        background: v.$color-section-bg;
+        border-radius: v.$radius-l;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+        padding: v.$space-2;
+        cursor: pointer;
+        will-change: transform;
+        @include mx.smooth;
+
+        img {
+            width: 100%;
+            border-radius: v.$radius-m;
+            max-height: 180px;
+            object-fit: cover;
+            display: block;
+        }
+
+        h3 {
+            margin-top: 0.75rem;
+            font-family: v.$font-family-base;
+            font-size: 1.2rem;
+            font-weight: v.$font-weight-semibold;
+            color: v.$color-text-main;
+        }
+
+        .project-summary {
+            color: v.$color-text-secondary;
+            position: relative;
+            font-size: 0.95rem;
+            line-height: 1.4;
+            margin-top: 0.5rem;
+            max-height: 3.8em;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            transition: all 0.3s ease;
+        }
+
+        &:hover,
+        &:focus-within {
+            transform: scale(1.05);
+            z-index: 2;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+
+            .project-summary {
+                -webkit-line-clamp: unset;
+                line-clamp: unset;
+                display: block;
+                overflow: visible;
+                white-space: normal;
+                max-height: none;
+                opacity: 1;
+            }
+        }
+
+        // MOBILE: mantener truncado, sin hover
+        @include mx.mobile {
+            .project-summary {
+                -webkit-line-clamp: 3;
+                line-clamp: 3;
+                max-height: 3.8em;
+                display: -webkit-box;
+                overflow: hidden;
+                white-space: normal;
+            }
+        }
+    }
+
+    // -------- Fade edges (only if overflow) --------
+
+    .fade-left,
+    .fade-right {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        width: 40px;
+        pointer-events: none;
+        z-index: 1;
+        transition: opacity 0.2s ease;
+    }
+
+    .fade-left {
+        left: 0;
+        background: linear-gradient(to right, v.$color-base-bg 0%, transparent 100%);
+    }
+
+    .fade-right {
+        right: 0;
+        background: linear-gradient(to left, v.$color-base-bg 0%, transparent 100%);
+    }
+}

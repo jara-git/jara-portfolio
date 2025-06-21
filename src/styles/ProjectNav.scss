@@ -1,0 +1,88 @@
+@use 'variables' as vars;
+@use 'mixins' as m;
+@use './buttons' as buttons;
+
+
+.project-detail-container {
+    display: flex;
+    flex-direction: row;
+
+    .project-nav {
+        width: 220px;
+        flex-shrink: 0;
+
+        @include m.tablet {
+            width: 100%;
+            flex-shrink: unset;
+            order: -1; // que aparezca arriba
+        }
+
+        @include m.mobile {
+            width: 100%;
+            flex-shrink: unset;
+            order: -1;
+        }
+    }
+
+    .project-detail-content {
+        flex-grow: 1;
+        padding: 2rem;
+    }
+
+    @include m.tablet {
+        flex-direction: row; // apila nav arriba y contenido abajo
+    }
+
+    @include m.mobile {
+        flex-direction: column;
+    }
+}
+.project-nav {
+    display: flex;
+    overflow-x: auto;
+    border-bottom: 1px solid vars.$color-accent-coral;
+    background: vars.$color-section-bg;
+
+    a {
+        padding: 0.5rem 1rem;
+        color: vars.$color-grey-dark;
+        text-decoration: none;
+        white-space: nowrap;
+        border-bottom: 3px solid transparent;
+        transition: border-color 0.3s ease, color 0.3s ease;
+
+        &.active {
+            border-color: vars.$color-gold;
+            font-weight: vars.$font-weight-semibold;
+            color: vars.$color-black;
+        }
+
+        &:hover,
+        &:focus-visible {
+            color: vars.$color-gold;
+            outline: none;
+        }
+    }
+
+    @media (min-width: 768px) {
+        flex-direction: column;
+        width: 220px;
+        border-bottom: none;
+        border-right: 1px solid #5c5c5c14;
+        height: 100vh;
+        position: sticky;
+        top: 0;
+        background: vars.$color-white;
+
+        a {
+            padding: 1rem 1.5rem;
+            border-bottom: none;
+            border-left: 4px solid transparent;
+
+            &.active {
+                border-left-color: vars.$color-accent-coral;
+                border-bottom: none;
+            }
+        }
+    }
+}

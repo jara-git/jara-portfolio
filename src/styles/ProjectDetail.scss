@@ -1,0 +1,307 @@
+@use "../styles/variables" as vars;
+@use "../styles/mixins" as m;
+
+/* ——————————————— CONTAINER AND GRID ——————————————— */
+
+.project-detail-container .project-detail-content {
+    flex-grow: 1;
+    padding: 2rem;
+    max-width: 800px;
+    margin: 0 auto;
+    gap: 2rem;
+
+    @include m.mobile {
+        padding: 1rem;
+    }
+}
+
+.project-detail-container {
+    position: relative;
+    
+}
+
+
+/* ——————————————— CLOSE BUTTON ——————————————— */
+.close {
+    @include m.flex-center;
+    position: absolute;
+    top: vars.$spacing-unit;
+    right: vars.$spacing-unit;
+    width: 36px;
+    height: 36px;
+    border: none;
+    border-radius: 100%;
+    padding: 0.4rem 0.5rem;
+    background-color: #5c5c5c;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    font-weight: 600;
+    border: none;
+    border-radius: 100%;
+
+    svg {
+        width: 20px;
+        height: 20px;
+    }
+
+    &:hover {
+        background: rgba(vars.$color-accent-coral, 0.15);
+    }
+
+    @include m.mobile {
+        width: 30px;
+        height: 30px;
+
+        svg {
+            width: 16px;
+            height: 16px;
+        }
+    }
+}
+
+/* ——————————————— HEAD: TITLE + TAGS ——————————————— */
+
+h2 {
+    font-family: vars.$font-title;
+    font-size: 1.8rem;
+    margin-bottom: vars.$spacing-unit;
+    color: vars.$color-black;
+
+    @include m.mobile {
+        font-size: 1.5rem;
+    }
+}
+
+.project-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: vars.$spacing-unit * 1.5;
+
+    .tag {
+        padding: 0.3rem 0.6rem;
+        font-size: 0.875rem;
+        border-radius: 0.3rem;
+        color: vars.$color-white;
+
+        &.role {
+            background: vars.$color-role;
+        }
+
+        &.type,
+        &.duration {
+            background: vars.$color-tag;
+        }
+
+        &.tool {
+            background: vars.$color-tool;
+        }
+
+        &.custom {
+            background: #7a989a;
+        }
+    }
+}
+
+/* ——————————————— SECTION GRID ——————————————— */
+
+.project-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: vars.$spacing-unit * 2;
+
+    @include m.mobile {
+        grid-template-columns: 1fr;
+    }
+
+    @include m.tablet {
+        grid-template-columns: 1fr;
+    }
+
+    @include m.desktop {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+#overview {
+    @include m.desktop {
+        grid-column: span 2;
+    }
+}
+
+.project-card.overview {
+    grid-column: span 1;
+
+    @media screen and (min-width: 1024px) {
+        grid-column: 1 / -1;
+    }
+}
+
+/* ——————————————— SECTION CARD ——————————————— */
+
+.project-section.card {
+    background: vars.$color-section-bg;
+    border-radius: vars.$border-radius;
+    padding: vars.$spacing-unit * 1.5;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    background: #f3ebdd;
+    display: flex;
+    flex-direction: column;
+
+    h3 {
+        font-family: vars.$font-title;
+        font-weight: vars.$font-weight-semibold;
+        letter-spacing: vars.$letter-spacing-headings;
+        margin-bottom: vars.$spacing-unit;
+        color: vars.$color-black;
+    }
+
+    .section-image,
+    img {
+        width: 100%;
+        max-height: 250px;
+        object-fit: cover;
+        border-radius: 8px;
+        margin-bottom: vars.$spacing-unit;
+    }
+
+    .section-content {
+        color: vars.$color-grey-dark;
+    }
+
+    /* Internal links (e.g., Demo / Code / Figma) */
+    .section-links {
+        margin-top: vars.$spacing-unit;
+        display: flex;
+        gap: vars.$spacing-unit;
+        flex-wrap: wrap;
+
+        .section-link {
+            color: vars.$color-accent-sage;
+            text-decoration: underline;
+            text-underline-offset: 0.4rem;
+            font-size: 0.9rem;
+
+            &:hover {
+                color: vars.$color-link;
+            }
+        }
+    }
+}
+
+.screens {
+    max-width: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    gap: 1.5rem;
+    align-items: center;
+    margin-top: 1rem;
+}
+
+.section-image-full {
+    border-radius: 8px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+    object-fit: cover;
+    height: 200px;
+    width: 100%;
+    cursor: pointer;
+}
+
+.section-image-full.full-width {
+    width: 100%;
+}
+
+.section-image-full.half-width {
+    width: 50%;
+    margin-right: 0.05rem;
+}
+
+/* ——————————————— EXTERNAL LINKS (BOTTOM) ——————————————— */
+
+.project-external-links {
+    margin: vars.$spacing-unit * 2 0;
+    display: flex;
+    gap: vars.$spacing-unit;
+    flex-wrap: wrap;
+
+    .external-link {
+        background: vars.$color-base-bg;
+        padding: 0.5rem 1rem;
+        border-radius: vars.$border-radius;
+        text-decoration: none;
+        color: vars.$color-grey-dark;
+        transition: background-color 0.2s ease;
+
+        &:hover {
+            background: vars.$color-section-bg;
+        }
+    }
+}
+.lightbox {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.85);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    cursor: zoom-out;
+    button {
+        font-weight: 600;
+        font-size: 0.6rem;
+        padding: 0.4rem 0.5rem;
+        background-color: #5c5c5c;
+        color: white;
+        border: none;
+        border-radius: 100%;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+    .lightbox-close {
+        position: relative;
+        bottom: 24rem;
+        left: -2.5rem;
+    }
+    .lightbox-nav.right {
+        position: relative;
+        left: 0.5rem;
+    }
+        .lightbox-nav.left {
+            position: relative;
+            left: -0.5rem;
+        }
+    .nav-arrow {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        background: rgba(47, 22, 22, 0.1);
+        border: none;
+        color: white;
+        font-size: 2rem;
+        padding: 0.5rem 1rem;
+        cursor: pointer;
+        z-index: 1100;
+
+        &:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        &.left {
+            left: 1rem;
+        }
+
+        &.right {
+            right: 1rem;
+        }
+    }
+}
+
+.lightbox-content img {
+    max-width: 90vw;
+    max-height: 90vh;
+    border-radius: 12px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+    object-fit: contain;
+}

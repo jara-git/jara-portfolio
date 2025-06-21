@@ -1,0 +1,307 @@
+@charset "UTF-8";
+/*Rol en UI Color Hex Comentario Fondo base Blanco cálido #F9F6F0 Luminoso y suave,
+da calidez Texto principal Gris oscuro #1A1A1A Legible y elegante 
+Texto secundario Gris medio #5C5C5C Neutro y no intrusivo 
+Color de énfasis Coral suave #D88F70 Para ilustraciones,
+botones clave Hover/acento Verde salvia #BFC8B2 Refrescante,
+menos visto 
+Links activos Azul grisáceo #A8BCC9 Tranquilo pero reconocible 
+Fondo de secciones Crema claro #F3EBDD Para bloques o tarjetas 
+Borde o detalle Oro viejo #C1A46A 
+Líneas finas o iconos decorativos Elemento UI Color sugerido Títulos #1A1A1A (o #3A2E2E si quieres un toque más cálido) 
+Texto #5C5C5C o #4B4B4B 
+Botones primarios Fondo #D88F70+texto blanco (#FFFFFF) 
+Botones hover #B25E48 (versión más intensa del coral)
+Botones secundarios Borde #D88F70,texto #D88F70,fondo transparente
+Hover en links #A8BCC9 (azul grisáceo claro) 
+Iconos activos #C1A46A (oro suave)*/
+/* ——————————————— CONTAINER AND GRID ——————————————— */
+.project-detail-container .project-detail-content {
+  flex-grow: 1;
+  padding: 2rem;
+  max-width: 800px;
+  margin: 0 auto;
+  gap: 2rem;
+}
+@media (max-width: 480px) {
+  .project-detail-container .project-detail-content {
+    padding: 1rem;
+  }
+}
+
+.project-detail-container {
+  position: relative;
+}
+
+/* ——————————————— CLOSE BUTTON ——————————————— */
+.close {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  width: 36px;
+  height: 36px;
+  border: none;
+  border-radius: 100%;
+  padding: 0.4rem 0.5rem;
+  background-color: #5c5c5c;
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  font-weight: 600;
+  border: none;
+  border-radius: 100%;
+}
+.close svg {
+  width: 20px;
+  height: 20px;
+}
+.close:hover {
+  background: rgba(216, 143, 112, 0.15);
+}
+@media (max-width: 480px) {
+  .close {
+    width: 30px;
+    height: 30px;
+  }
+  .close svg {
+    width: 16px;
+    height: 16px;
+  }
+}
+
+/* ——————————————— HEAD: TITLE + TAGS ——————————————— */
+h2 {
+  font-family: "Century Gothic", CenturyGothic, AppleGothic, sans-serif;
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+  color: #1A1A1A;
+}
+@media (max-width: 480px) {
+  h2 {
+    font-size: 1.5rem;
+  }
+}
+
+.project-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+.project-tags .tag {
+  padding: 0.3rem 0.6rem;
+  font-size: 0.875rem;
+  border-radius: 0.3rem;
+  color: #faf8f4;
+}
+.project-tags .tag.role {
+  background: #D88F70;
+}
+.project-tags .tag.type, .project-tags .tag.duration {
+  background: #5C5C5C;
+}
+.project-tags .tag.tool {
+  background: #BFC8B2;
+}
+.project-tags .tag.custom {
+  background: #7a989a;
+}
+
+/* ——————————————— SECTION GRID ——————————————— */
+.project-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+}
+@media (max-width: 480px) {
+  .project-grid {
+    grid-template-columns: 1fr;
+  }
+}
+@media (min-width: 481px) and (max-width: 768px) {
+  .project-grid {
+    grid-template-columns: 1fr;
+  }
+}
+@media (min-width: 769px) {
+  .project-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 769px) {
+  #overview {
+    grid-column: span 2;
+  }
+}
+
+.project-card.overview {
+  grid-column: span 1;
+}
+@media screen and (min-width: 1024px) {
+  .project-card.overview {
+    grid-column: 1/-1;
+  }
+}
+
+/* ——————————————— SECTION CARD ——————————————— */
+.project-section.card {
+  background: #F3EBDD;
+  border-radius: 0.375rem;
+  padding: 1.5rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  background: #f3ebdd;
+  display: flex;
+  flex-direction: column;
+  /* Internal links (e.g., Demo / Code / Figma) */
+}
+.project-section.card h3 {
+  font-family: "Century Gothic", CenturyGothic, AppleGothic, sans-serif;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  margin-bottom: 1rem;
+  color: #1A1A1A;
+}
+.project-section.card .section-image,
+.project-section.card img {
+  width: 100%;
+  max-height: 250px;
+  -o-object-fit: cover;
+     object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+}
+.project-section.card .section-content {
+  color: #323232;
+}
+.project-section.card .section-links {
+  margin-top: 1rem;
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+.project-section.card .section-links .section-link {
+  color: #BFC8B2;
+  text-decoration: underline;
+  text-underline-offset: 0.4rem;
+  font-size: 0.9rem;
+}
+.project-section.card .section-links .section-link:hover {
+  color: #A8BCC9;
+}
+
+.screens {
+  max-width: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  gap: 1.5rem;
+  align-items: center;
+  margin-top: 1rem;
+}
+
+.section-image-full {
+  border-radius: 8px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+  -o-object-fit: cover;
+     object-fit: cover;
+  height: 200px;
+  width: 100%;
+  cursor: pointer;
+}
+
+.section-image-full.full-width {
+  width: 100%;
+}
+
+.section-image-full.half-width {
+  width: 50%;
+  margin-right: 0.05rem;
+}
+
+/* ——————————————— EXTERNAL LINKS (BOTTOM) ——————————————— */
+.project-external-links {
+  margin: 2rem 0;
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+.project-external-links .external-link {
+  background: #F9F6F0;
+  padding: 0.5rem 1rem;
+  border-radius: 0.375rem;
+  text-decoration: none;
+  color: #323232;
+  transition: background-color 0.2s ease;
+}
+.project-external-links .external-link:hover {
+  background: #F3EBDD;
+}
+
+.lightbox {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.85);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  cursor: zoom-out;
+}
+.lightbox button {
+  font-weight: 600;
+  font-size: 0.6rem;
+  padding: 0.4rem 0.5rem;
+  background-color: #5c5c5c;
+  color: white;
+  border: none;
+  border-radius: 100%;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+.lightbox .lightbox-close {
+  position: relative;
+  bottom: 24rem;
+  left: -2.5rem;
+}
+.lightbox .lightbox-nav.right {
+  position: relative;
+  left: 0.5rem;
+}
+.lightbox .lightbox-nav.left {
+  position: relative;
+  left: -0.5rem;
+}
+.lightbox .nav-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(47, 22, 22, 0.1);
+  border: none;
+  color: white;
+  font-size: 2rem;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  z-index: 1100;
+}
+.lightbox .nav-arrow:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+.lightbox .nav-arrow.left {
+  left: 1rem;
+}
+.lightbox .nav-arrow.right {
+  right: 1rem;
+}
+
+.lightbox-content img {
+  max-width: 90vw;
+  max-height: 90vh;
+  border-radius: 12px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+  -o-object-fit: contain;
+     object-fit: contain;
+}/*# sourceMappingURL=ProjectDetail.css.map */

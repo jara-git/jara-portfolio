@@ -1,0 +1,77 @@
+@use '../styles/variables' as vars;
+@use '../styles/mixins' as mixins;
+
+.button {
+    font-family: vars.$font-family-base;
+    font-weight: vars.$font-weight-semibold; 
+    font-size: 1rem;
+    padding: 0.75rem 1.5rem;
+    background-color: vars.$color-text-secondary;
+    color: vars.$color-base-bg;
+    border: none;
+    border-radius: 0.25rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    letter-spacing: vars.$letter-spacing-base;
+    text-decoration: none;
+
+    @include mixins.mobile {
+        font-size: 0.9rem;
+        padding: 0.6rem 1.2rem;
+    }
+
+    &:hover,
+    &:focus-visible {
+        background-color: vars.$color-accent-sage;
+        outline: none;
+    }
+}
+
+// Variants
+
+.button--primary {
+    background-color: vars.$color-accent-coral;
+    color: vars.$color-base-bg;
+
+    &:hover,
+    &:focus-visible {
+        background-color: vars.$color-accent-coral-hov;
+        outline: none;
+    }
+}
+
+.button--secondary {
+    background-color: vars.$color-bg-secondary-button;
+    color: vars.$color-accent-coral;
+    border: 1px solid vars.$color-accent-coral;
+
+    &:hover,
+    &:focus-visible {
+        background-color: vars.$color-bg-secondary-button;
+        color: vars.$color-accent-coral-hov;
+        outline: none;
+    }
+}
+
+.button--outline {
+    background-color: transparent;
+    border: 1px solid vars.$color-text-secondary;
+    color: vars.$color-text-secondary;
+
+    &:hover,
+    &:focus-visible {
+        background-color: vars.$color-text-secondary;
+        color: vars.$color-base-bg;
+        outline: none;
+    }
+}
+
+.button--small {
+    font-size: 0.85rem;
+    padding: 0.4rem 0.8rem;
+
+    @include mixins.mobile {
+        font-size: 0.75rem;
+        padding: 0.3rem 0.6rem;
+    }
+}

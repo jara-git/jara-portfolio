@@ -1,0 +1,146 @@
+@charset "UTF-8";
+/*Rol en UI Color Hex Comentario Fondo base Blanco cálido #F9F6F0 Luminoso y suave,
+da calidez Texto principal Gris oscuro #1A1A1A Legible y elegante 
+Texto secundario Gris medio #5C5C5C Neutro y no intrusivo 
+Color de énfasis Coral suave #D88F70 Para ilustraciones,
+botones clave Hover/acento Verde salvia #BFC8B2 Refrescante,
+menos visto 
+Links activos Azul grisáceo #A8BCC9 Tranquilo pero reconocible 
+Fondo de secciones Crema claro #F3EBDD Para bloques o tarjetas 
+Borde o detalle Oro viejo #C1A46A 
+Líneas finas o iconos decorativos Elemento UI Color sugerido Títulos #1A1A1A (o #3A2E2E si quieres un toque más cálido) 
+Texto #5C5C5C o #4B4B4B 
+Botones primarios Fondo #D88F70+texto blanco (#FFFFFF) 
+Botones hover #B25E48 (versión más intensa del coral)
+Botones secundarios Borde #D88F70,texto #D88F70,fondo transparente
+Hover en links #A8BCC9 (azul grisáceo claro) 
+Iconos activos #C1A46A (oro suave)*/
+.projects-section {
+  padding: 4rem 2rem;
+  background: #F9F6F0;
+}
+.projects-section h2 {
+  font-family: "Century Gothic", CenturyGothic, AppleGothic, sans-serif;
+  font-size: 2rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  color: #1A1A1A;
+  margin-bottom: 1.5rem;
+}
+@media (max-width: 480px) {
+  .projects-section h2 {
+    font-size: 1.5rem;
+    letter-spacing: 0.06em;
+  }
+}
+.projects-section .scroll-container {
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  position: relative;
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding: 1rem 0;
+  scroll-behavior: smooth;
+  display: flex;
+  align-items: center;
+}
+.projects-section .project-row {
+  display: flex;
+  gap: 2rem;
+  padding: 0 2rem;
+  align-items: flex-start;
+}
+@media (max-width: 480px) {
+  .projects-section .project-row {
+    padding: 0;
+  }
+}
+.projects-section .project-card {
+  scroll-snap-align: start;
+  height: auto;
+  position: relative;
+  flex: 0 0 300px;
+  max-height: 480px;
+  min-height: 320px;
+  max-width: 300px;
+  background: #F3EBDD;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+  padding: 1rem;
+  cursor: pointer;
+  will-change: transform;
+  transition: all 0.25s ease;
+}
+.projects-section .project-card img {
+  width: 100%;
+  border-radius: 8px;
+  max-height: 180px;
+  -o-object-fit: cover;
+     object-fit: cover;
+  display: block;
+}
+.projects-section .project-card h3 {
+  margin-top: 0.75rem;
+  font-family: "Century Gothic", CenturyGothic, AppleGothic, sans-serif;
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #1A1A1A;
+}
+.projects-section .project-card .project-summary {
+  color: #5C5C5C;
+  position: relative;
+  font-size: 0.95rem;
+  line-height: 1.4;
+  margin-top: 0.5rem;
+  max-height: 3.8em;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  transition: all 0.3s ease;
+}
+.projects-section .project-card:hover, .projects-section .project-card:focus-within {
+  transform: scale(1.05);
+  z-index: 2;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+.projects-section .project-card:hover .project-summary, .projects-section .project-card:focus-within .project-summary {
+  -webkit-line-clamp: unset;
+  line-clamp: unset;
+  display: block;
+  overflow: visible;
+  white-space: normal;
+  max-height: none;
+  opacity: 1;
+}
+@media (max-width: 480px) {
+  .projects-section .project-card .project-summary {
+    -webkit-line-clamp: 3;
+    line-clamp: 3;
+    max-height: 3.8em;
+    display: -webkit-box;
+    overflow: hidden;
+    white-space: normal;
+  }
+}
+.projects-section .fade-left,
+.projects-section .fade-right {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 40px;
+  pointer-events: none;
+  z-index: 1;
+  transition: opacity 0.2s ease;
+}
+.projects-section .fade-left {
+  left: 0;
+  background: linear-gradient(to right, #F9F6F0 0%, transparent 100%);
+}
+.projects-section .fade-right {
+  right: 0;
+  background: linear-gradient(to left, #F9F6F0 0%, transparent 100%);
+}/*# sourceMappingURL=Projects.css.map */
