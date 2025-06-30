@@ -4,6 +4,7 @@ import ProjectCard from './ProjectCard';
 import '../styles/ProjectDetail.scss';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X, ArrowLeft, ArrowRight, ExternalLink } from 'lucide-react';
+import ExternalButton from './ExternalButton';
 
 const navItems = [
     { id: 'overview', label: 'Overview' },
@@ -19,7 +20,6 @@ const navItems = [
 export default function ProjectDetail({ project, onClose }) {
     const [activeId, setActiveId] = useState('overview');
     const observer = useRef(null);
-
     const [lightboxImages, setLightboxImages] = useState([]);
     const [lightboxIndex, setLightboxIndex] = useState(0);
 
@@ -46,21 +46,14 @@ export default function ProjectDetail({ project, onClose }) {
         setLightboxImages(images);
         setLightboxIndex(start);
     };
-    const closeLightbox = () => {
-        setLightboxImages([]);
-        setLightboxIndex(0);
-    };
+    const closeLightbox = () => setLightboxImages([]);
     const goPrevImage = e => {
         e.stopPropagation();
-        setLightboxIndex(prev =>
-            prev > 0 ? prev - 1 : lightboxImages.length - 1
-        );
+        setLightboxIndex(prev => (prev > 0 ? prev - 1 : lightboxImages.length - 1));
     };
     const goNextImage = e => {
         e.stopPropagation();
-        setLightboxIndex(prev =>
-            prev < lightboxImages.length - 1 ? prev + 1 : 0
-        );
+        setLightboxIndex(prev => (prev < lightboxImages.length - 1 ? prev + 1 : 0));
     };
 
     if (!project) return null;
@@ -95,18 +88,6 @@ export default function ProjectDetail({ project, onClose }) {
         </>
     );
 
-    const externalLinks = [
-        project.demo && { url: project.demo, label: '🔗 Live Demo' },
-        project.code && { url: project.code, label: '💻 Code' },
-        project.figma && { url: project.figma, label: '🎨 Figma' }
-    ].filter(Boolean);
-
-    const combinedOutcome = (
-        <>
-            {project.outcome && <p>{project.outcome}</p>}
-            {project.learnings && <p>{project.learnings}</p>}
-        </>
-    );
 
     return (
         <AnimatePresence>
@@ -115,7 +96,7 @@ export default function ProjectDetail({ project, onClose }) {
                 initial={{ opacity: 0, y: 40 }}
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: 40 }}
-                transition={{ duration: 0.4, ease: "easeInOut" }}
+                transition={{ duration: 0.4, ease: 'easeInOut' }}
             >
                 <ProjectNav navItems={navItems} activeId={activeId} onClick={id => {
                     setActiveId(id);
@@ -142,36 +123,75 @@ export default function ProjectDetail({ project, onClose }) {
 
                     <div className="project-grid">
                         <section id="overview" className="project-section">
-                            <ProjectCard type="overview" title="Overview" image={sectionImages.overview}
-                                links={
-                                    [
-                                        project.demo && { url: project.demo, label: '🔗 Live Demo' },
-                                        project.code && { url: project.code, label: '💻 Code' }
-                                    ].filter(Boolean)
-                                }>
-
+                            <ProjectCard
+                                type="overview"
+                                title="Overview"
+                                image={sectionImages.overview}
+                                links={[]}
+                            >
                                 <p>{project.overview}</p>
+
+                                {/* NEW: Buttons for demo, code, prototype */}
+                                <div className="project-links">
+                                    {project.demo && (
+                                        <a href={project.demo} target="_blank" rel="noopener noreferrer" className="project-link-button">
+                                            <img src="/assets/img-ProjectDetails/demo.svg" alt="Live demo icon" />
+                                            Live Demo
+                                        </a>
+                                    )}
+                                    {project.code && (
+                                        <a href={project.code} target="_blank" rel="noopener noreferrer" className="project-link-button">
+                                            <img src="/assets/img-ProjectDetails/code.svg" alt="Code icon" />
+                                            Code
+                                        </a>
+                                    )}
+                                    {project.prototype && (
+                                        <a href={project.prototype} target="_blank" rel="noopener noreferrer" className="project-link-button">
+                                            <img src="/assets/img-ProjectDetails/prototype.svg" alt="Prototype icon" />
+                                            Prototype
+                                        </a>
+                                    )}
+                                </div>
+
+
+
+                                {project.note && (
+                                    <p className="project-note">
+                                        <strong>Note:</strong>
+                                        <em>{project.note}</em>
+                                    </p>
+                                )}
                             </ProjectCard>
                         </section>
 
-                        {project.challenge && (
-                            <section id="challenge" className="project-section">
-                                <ProjectCard title="Challenge" image={sectionImages.challenge}>
-                                    <p>{project.challenge}</p>
-                                    {project.challengeLink && (
-                                        <a
-                                            href={project.challengeLink}
-                                            target="_blank"
-                                            rel="noopener noreferrer"
-                                            className="external-link"
-                                        >
-                                            <ExternalLink size={16} /> View Problem Statement
-                                        </a>
-                                    )}
-                                </ProjectCard>
-                            </section>
-                        )}
 
+                        {['challenge', 'research', 'approach', 'outcome'].map(section => (
+                            project[section] && (
+                                <section key={section} id={section} className="project-section">
+                                    <ProjectCard title={section.charAt(0).toUpperCase() + section.slice(1)} image={sectionImages[section]}>
+                                        <p>{project[section]}</p>
+                                        {project[`${section}Pdf`] && (
+                                            <div className="pdf-embed">
+                                                <iframe
+                                                    src={project[`${section}Pdf`]}
+                                                    title={`${section} PDF`}
+                                                    width="100%"
+                                                    height="600px"
+                                                    style={{ border: '1px solid #ccc', borderRadius: '8px' }}
+                                                />
+                                                <p>
+                                                    <ExternalButton
+                                                        href={project.researchPdf}
+                                                        icon="/public/assets/img-ProjectDetails/pdf.svg"
+                                                        label="Open full PDF"
+                                                    />
+                                                </p>
+                                            </div>
+                                        )}
+                                    </ProjectCard>
+                                </section>
+                            )
+                        ))}
 
                         {project.goals && (
                             <section id="goals" className="project-section">
@@ -181,25 +201,9 @@ export default function ProjectDetail({ project, onClose }) {
                             </section>
                         )}
 
-                        {project.research && (
-                            <section id="research" className="project-section">
-                                <ProjectCard title="Research" image={sectionImages.research} links={externalLinks}>
-                                    <p>{project.research}</p>
-                                </ProjectCard>
-                            </section>
-                        )}
-
-                        {project.ideas && (
-                            <section id="approach" className="project-section">
-                                <ProjectCard title="Approach" image={sectionImages.approach} links={externalLinks}>
-                                    <p>{project.ideas}</p>
-                                </ProjectCard>
-                            </section>
-                        )}
-
                         {(project.wireframes || project.wireframeImage || project.wireframeLink) && (
                             <section id="wireframes" className="project-section">
-                                <ProjectCard title="Wireframes / Mockups" image={sectionImages.wireframes} links={externalLinks}>
+                                <ProjectCard title="Wireframes / Mockups" image={sectionImages.wireframes}>
                                     {project.wireframes && (
                                         Array.isArray(project.wireframes)
                                             ? project.wireframes.map((text, i) => <p key={i}>{text}</p>)
@@ -214,14 +218,11 @@ export default function ProjectDetail({ project, onClose }) {
                                         />
                                     )}
                                     {project.wireframeLink && (
-                                        <a
+                                        <ExternalButton
                                             href={project.wireframeLink}
-                                            target="_blank"
-                                            rel="noopener noreferrer"
-                                            className="external-link figma-link"
-                                        >
-                                            <ExternalLink size={16} /> View Prototype / Mockup
-                                        </a>
+                                            icon="/public/assets/img-ProjectDetails/prototype-b.svg"
+                                            label="View Mockup"
+                                        />
                                     )}
                                 </ProjectCard>
                             </section>
@@ -229,30 +230,12 @@ export default function ProjectDetail({ project, onClose }) {
 
                         {(project.finalDesign || (project.finalScreens && project.finalScreens.length > 0)) && (
                             <section id="design" className="project-section">
-                                <ProjectCard title="Design & Screens" image={sectionImages.design} links={externalLinks}>
+                                <ProjectCard title="Design & Screens" image={sectionImages.design}>
                                     {combinedDesign}
                                 </ProjectCard>
                             </section>
                         )}
-
-                        {(project.outcome || project.learnings) && (
-                            <section id="outcome" className="project-section">
-                                <ProjectCard title="Outcome & Learnings" image={sectionImages.outcome}>
-                                    {combinedOutcome}
-                                </ProjectCard>
-                            </section>
-                        )}
                     </div>
-
-                    {externalLinks.length > 0 && (
-                        <div className="project-external-links">
-                            {externalLinks.map((link, i) => (
-                                <a key={i} className="external-link" href={link.url} target="_blank" rel="noopener noreferrer">
-                                    {link.label}
-                                </a>
-                            ))}
-                        </div>
-                    )}
                 </div>
 
                 {lightboxImages.length > 0 && (

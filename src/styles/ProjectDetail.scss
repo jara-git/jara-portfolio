@@ -17,9 +17,7 @@
 
 .project-detail-container {
     position: relative;
-    
 }
-
 
 /* ——————————————— CLOSE BUTTON ——————————————— */
 .close {
@@ -104,6 +102,8 @@ h2 {
     }
 }
 
+
+
 /* ——————————————— SECTION GRID ——————————————— */
 
 .project-grid {
@@ -136,7 +136,56 @@ h2 {
     @media screen and (min-width: 1024px) {
         grid-column: 1 / -1;
     }
+
+    .project-note {
+        font-size: 0.85rem;
+        font-style: italic;
+        margin-top: 1rem;
+    }
 }
+
+.project-links {
+    margin-top: 1.5rem;
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.project-link-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: vars.$font-family-base;
+    font-weight: vars.$font-weight-semibold;
+    font-size: 0.95rem;
+    background-color: #f8f0ee;
+    background-color: vars.$color-section-bg;
+    color: vars.$color-text-main;
+    border-radius: vars.$radius-s;
+    padding: 0.6rem 1rem;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    border: 1px solid #dbe0e54a;
+    img {
+        width: 18px;
+        height: 18px;
+    }
+
+    &:hover,
+    &:focus-visible {
+        background-color: vars.$color-accent-coral;
+        border-color: vars.$color-accent-coral;
+        color: vars.$color-black;
+
+        img {
+            filter: none;
+        }
+    }
+}
+
+
+
+
 
 /* ——————————————— SECTION CARD ——————————————— */
 
@@ -268,10 +317,10 @@ h2 {
         position: relative;
         left: 0.5rem;
     }
-        .lightbox-nav.left {
-            position: relative;
-            left: -0.5rem;
-        }
+    .lightbox-nav.left {
+        position: relative;
+        left: -0.5rem;
+    }
     .nav-arrow {
         position: absolute;
         top: 50%;
@@ -304,4 +353,50 @@ h2 {
     border-radius: 12px;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
     object-fit: contain;
+}
+/* ——————————————— PDF EMBED ——————————————— */
+
+.pdf-embed {
+    margin-top: vars.$spacing-unit * 1.5;
+
+    iframe {
+        width: 100%;
+        height: 600px;
+        border: 1px solid #ccc;
+        border-radius: 8px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        background: white;
+        display: none;
+    }
+
+    a.external-link {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.4rem;
+        margin-top: 0.75rem;
+        font-weight: 500;
+        text-decoration: none;
+        color: vars.$color-accent-sage;
+        background: vars.$color-base-bg;
+        padding: 0.4rem 0.8rem;
+        border-radius: 6px;
+        font-size: 0.9rem;
+        transition: all 0.2s ease-in-out;
+
+        svg {
+            width: 16px;
+            height: 16px;
+        }
+
+        &:hover {
+            background-color: vars.$color-section-bg;
+            color: vars.$color-link;
+        }
+    }
+
+    @include m.mobile {
+        iframe {
+            height: 400px;
+        }
+    }
 }

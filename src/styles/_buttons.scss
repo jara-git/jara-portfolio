@@ -75,3 +75,37 @@
         padding: 0.3rem 0.6rem;
     }
 }
+
+//External link buttons
+
+.project-link-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: vars.$font-family-base;
+    font-weight: vars.$font-weight-semibold;
+    font-size: 0.95rem;
+    background-color: vars.$color-section-bg;
+    color: vars.$color-text-main;
+    border-radius: vars.$radius-s;
+    padding: 0.6rem 1rem;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    border: 1px solid #dbe0e54a;
+
+    img {
+        width: 18px;
+        height: 18px;
+    }
+
+    &:hover,
+    &:focus-visible {
+        background-color: vars.$color-accent-coral;
+        border-color: vars.$color-accent-coral;
+        color: vars.$color-black;
+
+        img {
+            filter: none;
+        }
+    }
+}

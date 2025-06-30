@@ -1,8 +1,7 @@
 import React, { useRef, useState, useEffect } from 'react';
 import '../styles/Projects.scss';
-import projectList from '../data/projects'; // import data from projects
+import projectList from '../data/projects';
 
-// Placeholder SVG as Data URI
 const placeholderImage = `data:image/svg+xml;utf8,
 <svg xmlns='http://www.w3.org/2000/svg' width='400' height='300' viewBox='0 0 400 300'>
   <rect width='400' height='300' fill='%23ddd' />
@@ -13,27 +12,24 @@ const placeholderImage = `data:image/svg+xml;utf8,
 </svg>`;
 
 function Projects({ onSelect }) {
-    const scrollRef = useRef(null);
+    const scrollRef1 = useRef(null);
+    const scrollRef2 = useRef(null);
 
-    // States to show hide fades
-    const [showLeftFade, setShowLeftFade] = useState(false);
-    const [showRightFade, setShowRightFade] = useState(false);
-    const [hovering, setHovering] = useState(false);
+    const [showLeftFade1, setShowLeftFade1] = useState(false);
+    const [showRightFade1, setShowRightFade1] = useState(false);
+    const [showLeftFade2, setShowLeftFade2] = useState(false);
+    const [showRightFade2, setShowRightFade2] = useState(false);
 
-    // Function that checks overflow and scroll position
-    const updateFade = () => {
-        const el = scrollRef.current;
+    const updateFade = (ref, setLeft, setRight) => {
+        const el = ref.current;
         if (!el) return;
         const { scrollLeft, scrollWidth, clientWidth } = el;
-        // If scrollLeft > 0, we show fade-left
-        setShowLeftFade(scrollLeft > 0);
-        // If scrollLeft + clientWidth < scrollWidth, we show fade-right
-        setShowRightFade(scrollLeft + clientWidth < scrollWidth - 1); // -1 for error margin
+        setLeft(scrollLeft > 0);
+        setRight(scrollLeft + clientWidth < scrollWidth - 1);
     };
 
-    // Scroll wheel control for horizontal scrolling
-    const handleWheel = e => {
-        const el = scrollRef.current;
+    const handleWheel = (ref) => (e) => {
+        const el = ref.current;
         if (el) {
             e.preventDefault();
             el.scrollLeft += e.deltaY;
@@ -41,68 +37,85 @@ function Projects({ onSelect }) {
     };
 
     useEffect(() => {
-        const el = scrollRef.current;
-        if (!el) return;
+        updateFade(scrollRef1, setShowLeftFade1, setShowRightFade1);
+        updateFade(scrollRef2, setShowLeftFade2, setShowRightFade2);
 
-        
-        updateFade();
-
-        // Listeners for scroll and resize
-        el.addEventListener('scroll', updateFade);
-        window.addEventListener('resize', updateFade);
-
-      
-
-        return () => {
-            el.removeEventListener('scroll', updateFade);
-            window.removeEventListener('resize', updateFade);
+        const handleResize = () => {
+            updateFade(scrollRef1, setShowLeftFade1, setShowRightFade1);
+            updateFade(scrollRef2, setShowLeftFade2, setShowRightFade2);
         };
-    }, []); // only mount/unmount
+
+        window.addEventListener('resize', handleResize);
+
+        return () => window.removeEventListener('resize', handleResize);
+    }, []);
+
+    const realProjects = projectList.filter(p =>
+        p.tags.includes('Client Project')
+    );
+
+    const otherProjects = projectList.filter(p =>
+        p.tags.some(tag => ['UX Challenge', 'Hackathon', 'Early Work'].includes(tag))
+    );
 
     return (
         <section className="projects-section" id="projects">
             <h2>Selected Projects</h2>
             <div
                 className="scroll-container"
-                ref={scrollRef}
-                onWheel={handleWheel}
-                onMouseEnter={() => { setHovering(true); updateFade(); }}
-                onMouseLeave={() => setHovering(false)}
+                ref={scrollRef1}
+                onWheel={handleWheel(scrollRef1)}
+                onScroll={() => updateFade(scrollRef1, setShowLeftFade1, setShowRightFade1)}
             >
-                {/* Fade left, only if showLeftFade */}
-                {showLeftFade && (
-                    <div className="fade-left" />
-                )}
-
+                {showLeftFade1 && <div className="fade-left" />}
                 <div className="project-row">
-                    {projectList.map(project => (
+                    {realProjects.map(project => (
                         <div
                             key={project.id}
                             className="project-card"
                             onClick={() => onSelect(project)}
-                            tabIndex={0} 
+                            tabIndex={0}
                         >
+                            <span className="project-badge client">Client</span>
                             <img
-                                src={project.image ? project.image : placeholderImage}
-                                alt={project.title ? project.title : 'Project image'}
+                                src={project.image || placeholderImage}
+                                alt={project.title || 'Project image'}
                             />
-                            <h3>{project.title ? project.title : 'Untitled Project'}</h3>
-                            <p className="project-summary">
-                                {project.description ? project.description : 'No description available.'}
-                            </p>
+                            <h3>{project.title || 'Untitled Project'}</h3>
+                            <p className="project-summary">{project.description || 'No description available.'}</p>
                         </div>
                     ))}
                 </div>
+                {showRightFade1 && <div className="fade-right" />}
+            </div>
 
-                {/* Fade right, only if showRightFade */}
-                {showRightFade && (
-                    <div className="fade-right" />
-                )}
+            <h2>UX Challenges & Early Work</h2>
+            <div
+                className="scroll-container"
+                ref={scrollRef2}
+                onWheel={handleWheel(scrollRef2)}
+                onScroll={() => updateFade(scrollRef2, setShowLeftFade2, setShowRightFade2)}
+            >
+                {showLeftFade2 && <div className="fade-left" />}
+                <div className="project-row">
+                    {otherProjects.map(project => {
+                        const tag = project.tags.find(t =>
+                            ['UX Challenge', 'Hackathon', 'Early Work'].includes(t)
+                        );
+                        return (
+                            <div key={project.id} className="project-card" onClick={() => onSelect(project)}>
+                                <span className={`project-badge ${tag?.toLowerCase().replace(' ', '-')}`}>{tag}</span>
+                                <img src={project.image || placeholderImage} alt={project.title} />
+                                <h3>{project.title}</h3>
+                                <p className="project-summary">{project.description}</p>
+                            </div>
+                        );
+                    })}
+                </div>
+                {showRightFade2 && <div className="fade-right" />}
             </div>
         </section>
     );
 }
 
 export default Projects;
-
-

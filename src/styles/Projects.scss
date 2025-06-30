@@ -122,27 +122,62 @@
             }
         }
     }
+    //Badges
+.project-badge {
+    position: absolute;
+    top: v.$space-2 * 0.5;
+    right: v.$space-2 * 0.5;
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    font-weight: bold;
+    background: v.$color-grey-dark;
+    color: v.$color-white;
+    padding: 0.2rem 0.5rem;
+    border-radius: v.$radius-s;
+    z-index: 2;
+    letter-spacing: 0.05em;
 
-    // -------- Fade edges (only if overflow) --------
-
-    .fade-left,
-    .fade-right {
-        position: absolute;
-        top: 0;
-        bottom: 0;
-        width: 40px;
-        pointer-events: none;
-        z-index: 1;
-        transition: opacity 0.2s ease;
+    &.client {
+        background-color: v.$color-tag;
     }
 
-    .fade-left {
-        left: 0;
-        background: linear-gradient(to right, v.$color-base-bg 0%, transparent 100%);
+    &.challenge {
+        background-color: #c576dd; // lilac tone
     }
 
-    .fade-right {
-        right: 0;
-        background: linear-gradient(to left, v.$color-base-bg 0%, transparent 100%);
+    &.early {
+        background-color: #5789e0; // blue tone
     }
+}
+}
+
+// -------- Fade edges (only if overflow) --------
+
+.fade-left,
+.fade-right {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 40px;
+    pointer-events: none;
+    z-index: 1;
+    transition: opacity 0.2s ease;
+}
+
+.fade-left {
+    left: 0;
+    background: linear-gradient(to right, v.$color-base-bg 0%, transparent 100%);
+}
+
+.fade-right {
+    right: 0;
+    background: linear-gradient(to left, v.$color-base-bg 0%, transparent 100%);
+}
+
+.scroll-container:nth-of-type(1) {
+    background-color: lighten(v.$color-base-bg, 1%);
+}
+
+.scroll-container:nth-of-type(2){
+    background-color: lighten(v.$color-base-bg, 3%);
 }

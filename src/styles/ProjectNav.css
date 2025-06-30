@@ -82,6 +82,34 @@ Iconos activos #C1A46A (oro suave)*/
   }
 }
 
+.project-link-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: "Century Gothic", CenturyGothic, AppleGothic, sans-serif;
+  font-weight: 600;
+  font-size: 0.95rem;
+  background-color: #F3EBDD;
+  color: #1A1A1A;
+  border-radius: 4px;
+  padding: 0.6rem 1rem;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  border: 1px solid rgba(219, 224, 229, 0.2901960784);
+}
+.project-link-button img {
+  width: 18px;
+  height: 18px;
+}
+.project-link-button:hover, .project-link-button:focus-visible {
+  background-color: #D88F70;
+  border-color: #D88F70;
+  color: #1A1A1A;
+}
+.project-link-button:hover img, .project-link-button:focus-visible img {
+  filter: none;
+}
+
 .project-detail-container {
   display: flex;
   flex-direction: row;

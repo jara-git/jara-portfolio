@@ -146,6 +146,47 @@ h2 {
     grid-column: 1/-1;
   }
 }
+.project-card.overview .project-note {
+  font-size: 0.85rem;
+  font-style: italic;
+  margin-top: 1rem;
+}
+
+.project-links {
+  margin-top: 1.5rem;
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.project-link-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: "Century Gothic", CenturyGothic, AppleGothic, sans-serif;
+  font-weight: 600;
+  font-size: 0.95rem;
+  background-color: #f8f0ee;
+  background-color: #F3EBDD;
+  color: #1A1A1A;
+  border-radius: 4px;
+  padding: 0.6rem 1rem;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  border: 1px solid rgba(219, 224, 229, 0.2901960784);
+}
+.project-link-button img {
+  width: 18px;
+  height: 18px;
+}
+.project-link-button:hover, .project-link-button:focus-visible {
+  background-color: #D88F70;
+  border-color: #D88F70;
+  color: #1A1A1A;
+}
+.project-link-button:hover img, .project-link-button:focus-visible img {
+  filter: none;
+}
 
 /* ——————————————— SECTION CARD ——————————————— */
 .project-section.card {
@@ -304,4 +345,45 @@ h2 {
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
   -o-object-fit: contain;
      object-fit: contain;
+}
+
+/* ——————————————— PDF EMBED ——————————————— */
+.pdf-embed {
+  margin-top: 1.5rem;
+}
+.pdf-embed iframe {
+  width: 100%;
+  height: 600px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  background: white;
+  display: none;
+}
+.pdf-embed a.external-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin-top: 0.75rem;
+  font-weight: 500;
+  text-decoration: none;
+  color: #BFC8B2;
+  background: #F9F6F0;
+  padding: 0.4rem 0.8rem;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  transition: all 0.2s ease-in-out;
+}
+.pdf-embed a.external-link svg {
+  width: 16px;
+  height: 16px;
+}
+.pdf-embed a.external-link:hover {
+  background-color: #F3EBDD;
+  color: #A8BCC9;
+}
+@media (max-width: 480px) {
+  .pdf-embed iframe {
+    height: 400px;
+  }
 }/*# sourceMappingURL=ProjectDetail.css.map */
