@@ -1,9 +1,10 @@
+// ProjectDetail.jsx
 import React, { useEffect, useRef, useState } from 'react';
 import ProjectNav from './ProjectNav';
 import ProjectCard from './ProjectCard';
 import '../styles/ProjectDetail.scss';
 import { motion, AnimatePresence } from 'framer-motion';
-import { X, ArrowLeft, ArrowRight, ExternalLink } from 'lucide-react';
+import { X, ArrowLeft, ArrowRight } from 'lucide-react';
 import ExternalButton from './ExternalButton';
 
 const navItems = [
@@ -14,7 +15,8 @@ const navItems = [
     { id: 'approach', label: 'Approach' },
     { id: 'wireframes', label: 'Wireframes' },
     { id: 'design', label: 'Design & Screens' },
-    { id: 'outcome', label: 'Outcome & Learnings' }
+    { id: 'outcome', label: 'Outcome' },
+    { id: 'learnings', label: 'Learnings' }
 ];
 
 export default function ProjectDetail({ project, onClose }) {
@@ -66,7 +68,8 @@ export default function ProjectDetail({ project, onClose }) {
         approach: '/assets/img-ProjectDetails/approach.svg',
         wireframes: '/assets/img-ProjectDetails/wireframe.svg',
         design: '/assets/img-ProjectDetails/final-design.svg',
-        outcome: '/assets/img-ProjectDetails/learning.svg'
+        outcome: '/assets/img-ProjectDetails/outcome.svg',
+        learnings: '/assets/img-ProjectDetails/learnings.svg'
     };
 
     const combinedDesign = (
@@ -87,7 +90,6 @@ export default function ProjectDetail({ project, onClose }) {
             )}
         </>
     );
-
 
     return (
         <AnimatePresence>
@@ -122,16 +124,11 @@ export default function ProjectDetail({ project, onClose }) {
                     </div>
 
                     <div className="project-grid">
-                        <section id="overview" className="project-section">
-                            <ProjectCard
-                                type="overview"
-                                title="Overview"
-                                image={sectionImages.overview}
-                                links={[]}
-                            >
-                                <p>{project.overview}</p>
 
-                                {/* NEW: Buttons for demo, code, prototype */}
+                        {/* OVERVIEW */}
+                        <section id="overview" className="project-section">
+                            <ProjectCard type="overview" title="Overview" image={sectionImages.overview}>
+                                <p>{project.overview}</p>
                                 <div className="project-links">
                                     {project.demo && (
                                         <a href={project.demo} target="_blank" rel="noopener noreferrer" className="project-link-button">
@@ -152,9 +149,6 @@ export default function ProjectDetail({ project, onClose }) {
                                         </a>
                                     )}
                                 </div>
-
-
-
                                 {project.note && (
                                     <p className="project-note">
                                         <strong>Note:</strong>
@@ -164,35 +158,31 @@ export default function ProjectDetail({ project, onClose }) {
                             </ProjectCard>
                         </section>
 
+                        {/* CHALLENGE */}
+                        {project.challenge && (
+                            <section id="challenge" className="project-section">
+                                <ProjectCard title="Challenge" image={sectionImages.challenge}>
+                                    <p>{project.challenge}</p>
+                                    {project.challengeImage && (
+                                        <img
+                                            src={project.challengeImage}
+                                            alt="Challenge"
+                                            className="section-image-full"
+                                            onClick={() => openLightbox([project.challengeImage])}
+                                        />
+                                    )}
+                                    {project.challengePdf && (
+                                        <ExternalButton
+                                            href={project.challengePdf}
+                                            icon="/assets/img-ProjectDetails/pdf.svg"
+                                            label="View challenge brief"
+                                        />
+                                    )}
+                                </ProjectCard>
+                            </section>
+                        )}
 
-                        {['challenge', 'research', 'approach', 'outcome'].map(section => (
-                            project[section] && (
-                                <section key={section} id={section} className="project-section">
-                                    <ProjectCard title={section.charAt(0).toUpperCase() + section.slice(1)} image={sectionImages[section]}>
-                                        <p>{project[section]}</p>
-                                        {project[`${section}Pdf`] && (
-                                            <div className="pdf-embed">
-                                                <iframe
-                                                    src={project[`${section}Pdf`]}
-                                                    title={`${section} PDF`}
-                                                    width="100%"
-                                                    height="600px"
-                                                    style={{ border: '1px solid #ccc', borderRadius: '8px' }}
-                                                />
-                                                <p>
-                                                    <ExternalButton
-                                                        href={project.researchPdf}
-                                                        icon="/public/assets/img-ProjectDetails/pdf.svg"
-                                                        label="Open full PDF"
-                                                    />
-                                                </p>
-                                            </div>
-                                        )}
-                                    </ProjectCard>
-                                </section>
-                            )
-                        ))}
-
+                        {/* GOALS */}
                         {project.goals && (
                             <section id="goals" className="project-section">
                                 <ProjectCard title="Goals" image={sectionImages.goals}>
@@ -201,6 +191,32 @@ export default function ProjectDetail({ project, onClose }) {
                             </section>
                         )}
 
+                        {/* RESEARCH */}
+                        {project.research && (
+                            <section id="research" className="project-section">
+                                <ProjectCard title="Research" image={sectionImages.research}>
+                                    <p>{project.research}</p>
+                                    {project.researchPdf && (
+                                        <ExternalButton
+                                            href={project.researchPdf}
+                                            icon="/assets/img-ProjectDetails/pdf.svg"
+                                            label="Open full PDF"
+                                        />
+                                    )}
+                                </ProjectCard>
+                            </section>
+                        )}
+
+                        {/* APPROACH */}
+                        {project.approach && (
+                            <section id="approach" className="project-section">
+                                <ProjectCard title="Approach" image={sectionImages.approach}>
+                                    <p>{project.approach}</p>
+                                </ProjectCard>
+                            </section>
+                        )}
+
+                        {/* WIREFRAMES */}
                         {(project.wireframes || project.wireframeImage || project.wireframeLink) && (
                             <section id="wireframes" className="project-section">
                                 <ProjectCard title="Wireframes / Mockups" image={sectionImages.wireframes}>
@@ -220,7 +236,7 @@ export default function ProjectDetail({ project, onClose }) {
                                     {project.wireframeLink && (
                                         <ExternalButton
                                             href={project.wireframeLink}
-                                            icon="/public/assets/img-ProjectDetails/prototype-b.svg"
+                                            icon="/assets/img-ProjectDetails/prototype-b.svg"
                                             label="View Mockup"
                                         />
                                     )}
@@ -228,10 +244,38 @@ export default function ProjectDetail({ project, onClose }) {
                             </section>
                         )}
 
+                        {/* DESIGN */}
                         {(project.finalDesign || (project.finalScreens && project.finalScreens.length > 0)) && (
                             <section id="design" className="project-section">
                                 <ProjectCard title="Design & Screens" image={sectionImages.design}>
                                     {combinedDesign}
+                                </ProjectCard>
+                            </section>
+                        )}
+
+                        {/* OUTCOME */}
+                        {project.outcome && (
+                            <section id="outcome" className="project-section">
+                                <ProjectCard title="Outcome" image={sectionImages.outcome}>
+                                    <p>{project.outcome}</p>
+                                    {project.outcomePdf && (
+                                        <ExternalButton
+                                            href={project.outcomePdf}
+                                            icon="/assets/img-ProjectDetails/pdf.svg"
+                                            label="View Final Presentation"
+                                        />
+                                    )}
+
+                                </ProjectCard>
+                            </section>
+                            
+                        )}
+
+                        {/* LEARNINGS */}
+                        {project.learnings && (
+                            <section id="learnings" className="project-section">
+                                <ProjectCard title="Learnings" image={sectionImages.learnings}>
+                                    <p>{project.learnings}</p>
                                 </ProjectCard>
                             </section>
                         )}

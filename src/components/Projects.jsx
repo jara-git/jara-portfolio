@@ -55,7 +55,7 @@ function Projects({ onSelect }) {
     );
 
     const otherProjects = projectList.filter(p =>
-        p.tags.some(tag => ['UX Challenge', 'Hackathon', 'Early Work'].includes(tag))
+        p.tags.some(tag => ['Technical Challenge', 'Hackathon', 'Early Work'].includes(tag))
     );
 
     return (
@@ -100,7 +100,7 @@ function Projects({ onSelect }) {
                 <div className="project-row">
                     {otherProjects.map(project => {
                         const tag = project.tags.find(t =>
-                            ['UX Challenge', 'Hackathon', 'Early Work'].includes(t)
+                            ['Technical Challenge', 'Hackathon', 'Early Work'].includes(t)
                         );
                         return (
                             <div key={project.id} className="project-card" onClick={() => onSelect(project)}>

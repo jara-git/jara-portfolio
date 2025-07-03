@@ -117,7 +117,7 @@ export default [
             'The main challenge was inheriting the project mid-way from another developer, with little to no documentation. I had to reverse-engineer parts of the codebase to understand the implementation, especially within a custom WordPress theme built from scratch.',
 
         goals:
-            'My goal was to continue the front- end development based on the designs provided in Figma, ensure responsiveness across screen sizes, and maintain consistency throughout the site. I also aimed to integrate smoothly with the rest of the team and ensure the WordPress backend supported the blog functionality the client wanted.',
+            'My goal was to continue the front-end development based on the designs provided in Figma, ensure responsiveness across screen sizes, and maintain consistency throughout the site. I also aimed to integrate smoothly with the rest of the team and ensure the WordPress backend supported the blog functionality the client wanted.',
 
         research:
             'This was a hands-on, implementation-focused project. I reviewed the existing codebase to understand its logic and structure, adapting to the developer’s previous approach while gradually improving clarity and maintainability. No user research was required.',
@@ -224,7 +224,8 @@ export default [
             'Design a playful, educational app for kids. Create engaging visuals and a simple routine tracker. Use UX questionnaires to define needs and prototype key screens in Figma.',
 
         research:
-            'We created user personas and short UX questionnaires for parents of young children to identify pain points around dental hygiene. We reviewed studies and resources from pediatric dentists to better understand motivations, barriers and effective methods for teaching hygiene. We tested basic flows using low- fidelity prototypes and iterated based on feedback.',
+            // 'We created user personas and short UX questionnaires for parents of young children to identify pain points around dental hygiene. We reviewed studies and resources from pediatric dentists to better understand motivations, barriers and effective methods for teaching hygiene. We tested basic flows using low- fidelity prototypes and iterated based on feedback.',
+            'We created user personas and UX questionnaires for parents of young children in Spain and Australia to identify key challenges around dental hygiene. We reviewed pediatric studies to understand motivations and barriers, and tested low-fidelity flows, iterating based on user feedback.',
 
         researchPdf: '/assets/docs/questionaire-monster-teeth.pdf',
         
@@ -273,7 +274,7 @@ export default [
 
         challenge:
             'The time constraint was the biggest challenge—just 24 hours to ideate, prototype, and deliver a functional MVP that addressed real user needs during the pandemic.',
-
+        
         goals:
             'Develop a responsive MVP for bar reservation management, balancing UX, UI, and technical feasibility within one day.',
 
@@ -285,19 +286,19 @@ export default [
 
         wireframes:
             'We started mobile-first, creating low- and high-fidelity prototypes in Figma. The focus was on simplicity, clarity, and responsiveness.',
-        wireframeImage: '/assets/LaPajita.png',
+        wireframeImage: '/assets/la-pajita-wireframe2.png',
 
         finalDesign:
             'A clean, responsive implementation faithful to our prototype. The final result worked across devices and met all the criteria of the hackathon challenge.',
 
         finalScreens: [
-            '/assets/lapajita.png',
-            '/assets/lapajita2.png'
+            '/assets/LaPajita.png',
+            '/assets/DetalleBar_Opiniones.png'
         ],
 
         outcome:
             'We successfully delivered a working MVP in 24 hours. The app addressed real-world challenges and could be adapted for use even beyond the pandemic.',
-
+        outcomePdf: '/assets/docs/La Pajita - Hackaton_compressed.pdf',
         learnings:
             'This project taught us to self-organize under pressure and leverage each teammate’s strengths. We learned to prioritize fast, communicate clearly, and keep our focus tight on delivering value in a short time.'
     },
@@ -309,7 +310,7 @@ export default [
         role: 'UX/UI Designer',
         responsibilities: ['UX Research', 'Visual Redesign', 'Prototype Creation'],
         tags: ['Technical Challenge', 'E-commerce', 'Shopify', 'Product Design'],
-        image: '/assets/nioTeas-mockup.png',
+        image: '/assets/nios-mockup-multilayer.png',
         demo: 'https://nioteas.com/',
         code: '',
         prototype: ' https://www.figma.com/proto/aqHJ0G1l1kWdRPYEiQpzZq/niosTea--mobile-app-redesign?page-id=1%3A2708&node-id=204-9394&p=f&viewport=1516%2C-11%2C0.45&t=jIhZnwgPK7hGz5zq-1&scaling=scale-down&content-scaling=fixed&starting-point-node-id=204%3A9394&show-proto-sidebar=1',
@@ -323,7 +324,7 @@ export default [
 
         challenge:
             'The tight deadline and parallel workload made time management particularly demanding. The selected brand, Nio Teas, had a solid product story but a visually underdeveloped product page. My challenge was to transform it into a sensory, story-driven user experience aligned with the brand’s values.',
-
+        challengeImage: '/assets/old-nio.png',
         goals:
             'Redesign a Shopify product detail page that enhances emotional connection, interactivity, and visual clarity while reflecting the calm intentionality and authenticity of a premium tea brand.',
 
@@ -335,14 +336,13 @@ export default [
 
         wireframes:
             'I created low-fidelity wireframes to structure the narrative and page flow, followed by a high-fidelity prototype that brought the calm, story-rich concept to life.',
-        wireframeImage: '/assets/nioTeas-wireframe.png',
+        wireframeImage: '/assets/nios-low-fi-product-page.png',
 
         finalDesign:
             'The final result is a product detail page that slows down the browsing experience, guiding users through a sensory exploration of the tea with visual softness and deliberate pacing.',
 
         finalScreens: [
-            '/assets/nioTeas-final1.png',
-            '/assets/nioTeas-final2.png'
+            '/assets/final-product-page-nios.png',
         ],
 
         outcome:
@@ -351,12 +351,61 @@ export default [
         learnings:
             'I reinforced my ability to work fast under pressure, tell product stories through UX/UI, and deliver quality results while juggling multiple challenges in parallel.'
     },
+    {
+        id: 'apropos-match',
+        title: 'Apropos Match Redesign',
+        description: 'Technical challenge to improve match visualization for a recruiting platform.',
+        shortDescription:
+            'Redesign of the match card component in a job matching platform, focusing on clarity and usability.',
+        role: 'UX/UI Designer & Front-end Developer',
+        responsibilities: '',
+        tags: ['Technical Challenge', 'UX/UI Redesign'],
+        image: '/assets/flow-a-low-fi-prototype-b.png',
+        demo: 'https://codepen.io/jara-git/pen/QwwPJvN', 
+        code: 'https://github.com/jara-git/apropos-match-visualization', // actual repo
+        figma: '', // optional
+        type: 'Design & Development Challenge',
+        duration: '4 hours',
+        tools: ['Figma', 'HTML', 'CSS', 'JavaScript'],
 
+        overview:
+            'This was a take-home technical challenge for a position at Apropos, a job platform using algorithmic matching. The goal was to redesign the match visualization component to help users better understand how matches are calculated and what actions to take based on the results. ',
 
+        challenge:
+            'The main challenge was the lack of clarity in how match scores were presented. The initial design used percentage bars, but users found them confusing. The brief asked to improve match understanding, highlight alignment areas, and clarify next steps, within an estimated 4-hour delivery window.',
+        
+        challengePdf: '/assets/docs/brief-apropos.pdf',
 
+        goals:
+            'Design a better way to present match information in the company (job seeker) view. Implement a functioning prototype and deliver a short presentation explaining the rationale.',
 
+        research:
+            'Due to time constraints (4hours total), no in-depth user interviews or benchmarking were required. However, I reviewed similar job platforms and analyzed the provided JSON data structure to guide the visualization design.',
 
+        approach:
+            'I structured the solution in three user flows (Job Seeker, Recruiter, Invited Candidate) and focused on visual hierarchy, scannability, and interactivity. I used tooltip explanations, tag filters, and interaction feedback to improve usability.',
 
+        wireframes:
+            'I created both hand-drawn and digital wireframes to plan the match card redesign, focusing on grouping information meaningfully and simplifying complexity.',
+
+        wireframeImage: '/assets/apropos-wireframes.png',
+
+        finalDesign:
+            'The final prototype includes an interactive match card component with personality bars, tag filters, explanation tooltips, and annotations. The design is modular and easily extendable.',
+
+        finalScreens: [
+            '/assets/apropos-cards-1.png',
+            '/assets/apropos-cards-2.png'
+        ],
+
+        outcome:
+            'Although this project was not selected for the final position, it allowed me to practice rapid prototyping, storytelling under time pressure, and reflect on how to communicate design intent more clearly. The process was valuable in surfacing areas for growth in strategic framing and presentation delivery.',
+        
+        outcomePdf:'/assets/docs/apropos-presentation_compressed.pdf',
+
+        learnings:
+            'I learned to ask more targeted questions early in the process instead of assuming constraints. I also realized the importance of aligning deliverables with not only explicit, but also implicit expectations — and of making strategic reasoning more visible within UX decisions.'
+    }
 
 
 ];
