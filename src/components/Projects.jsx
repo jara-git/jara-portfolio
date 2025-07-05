@@ -35,7 +35,7 @@ function Projects({ onSelect }) {
         const el = ref.current;
         if (el) {
             el.scrollLeft += e.deltaY;
-            updateFade(ref, leftKey, rightKey); // actualizar fades tras el scroll
+            updateFade(ref, leftKey, rightKey);
         }
     };
 
@@ -65,12 +65,14 @@ function Projects({ onSelect }) {
             <div className="section-container">
                 <h2>Selected Projects</h2>
                 <div
-                    className="scroll-container"
+                    className={`scroll-container 
+                        ${fadeState.left1 ? 'has-fade-left' : ''} 
+                        ${fadeState.right1 ? 'has-fade-right' : ''}`}
                     ref={scrollRef1}
                     onWheel={handleWheel(scrollRef1, 'left1', 'right1')}
                     onScroll={() => updateFade(scrollRef1, 'left1', 'right1')}
                 >
-                    {fadeState.left1 && <div className="fade-left" />}
+                    <div className="fade-left" />
                     <div className="project-row">
                         {realProjects.map(project => (
                             <div
@@ -89,19 +91,21 @@ function Projects({ onSelect }) {
                             </div>
                         ))}
                     </div>
-                    {fadeState.right1 && <div className="fade-right" />}
+                    <div className="fade-right" />
                 </div>
             </div>
 
             <div className="section-container">
-                <h2>UX Challenges & Early Work</h2>
+                <h2 className="challenges-early-work-title">UX Challenges & Early Work</h2>
                 <div
-                    className="scroll-container"
+                    className={`scroll-container 
+                        ${fadeState.left2 ? 'has-fade-left' : ''} 
+                        ${fadeState.right2 ? 'has-fade-right' : ''}`}
                     ref={scrollRef2}
                     onWheel={handleWheel(scrollRef2, 'left2', 'right2')}
                     onScroll={() => updateFade(scrollRef2, 'left2', 'right2')}
                 >
-                    {fadeState.left2 && <div className="fade-left" />}
+                    <div className="fade-left" />
                     <div className="project-row">
                         {otherProjects.map(project => {
                             const tag = project.tags.find(t =>
@@ -126,7 +130,7 @@ function Projects({ onSelect }) {
                             );
                         })}
                     </div>
-                    {fadeState.right2 && <div className="fade-right" />}
+                    <div className="fade-right" />
                 </div>
             </div>
         </section>

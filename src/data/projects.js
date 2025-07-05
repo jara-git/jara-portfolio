@@ -304,7 +304,7 @@ export default [
     },
     {
         id: 'nio-teas-shopify-challenge',
-        title: 'Shopify product page redesign',
+        title: 'Product page redesign',
         description: 'Redesign of a product detail page for a Swiss Shopify-based tea brand, delivered as part of a technical challenge.',
         shortDescription: 'A UX/UI redesign challenge that led to my first job offer in a Zürich-based agency.',
         role: 'UX/UI Designer',

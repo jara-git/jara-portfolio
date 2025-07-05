@@ -6,6 +6,9 @@
     background: v.$color-base-bg;
 .section-container {
         margin: 0 auto;
+        .challenges-early-work-title {
+                margin-top: 4rem;
+            }
 
         @include mx.mobile {
             padding: 2rem 1rem;
@@ -18,12 +21,15 @@
         letter-spacing: 0.08em;
         color: v.$color-text-main;
         margin-bottom: v.$space-2 * 1.5;
-
+        
         @include mx.mobile {
             font-size: 1.5rem;
             letter-spacing: 0.06em;
         }
+                
     }
+        
+       
 
     // -------- Horizontal scroll wrapper --------
     .scroll-container {
@@ -159,34 +165,44 @@
 
 // -------- Fade edges (only if overflow) --------
 
-.fade-left,
-.fade-right {
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    width: 60px; // un poco más ancho para enfatizar el efecto
-    pointer-events: none;
-    z-index: 3;
-    opacity: 0.9;
-    transition: opacity 0.3s ease-in-out;
-    will-change: opacity;
-}
+.scroll-container {
+    position: relative;
+    overflow-x: auto;
+    display: flex;
+    align-items: center;
+    scroll-behavior: smooth;
+    gap: 1rem;
 
-.fade-left {
-    left: 0;
-    background: linear-gradient(to right, v.$color-base-bg 0%, rgba(v.$color-base-bg, 0) 100%);
-}
-
-.fade-right {
-    right: 0;
-    background: linear-gradient(to left, v.$color-base-bg 0%, rgba(v.$color-base-bg, 0) 100%);
-}
-
-.scroll-container:nth-of-type(1) {
-    background-color: lighten(v.$color-base-bg, 1%);
-}
-
-.scroll-container:nth-of-type(2){
-    background-color: v.$lighter-base-bg;
+    .fade-left,
+        .fade-right {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            width: 40px; 
+            pointer-events: none;
+            z-index: 2;
+            
+        }
     
+        .fade-left {
+            left: 0;
+            background: linear-gradient(to right, rgba(255, 255, 255, 1), rgba(255, 255, 255, 0));
+        }
+    
+        .fade-right {
+            right: 0;
+            background: linear-gradient(to left, #f9f6f096, #dae1e800);
+        }
+
+    //Show fades only if there is hidden content AND the user hovers over it
+    &:hover.has-fade-left .fade-left,
+    &:hover.has-fade-right .fade-right {
+        opacity: 0.9;
+    }
+
+    // For touch devices (without hover), show if scrolling is possible
+    &.has-fade-left:not(:hover) .fade-left,
+    &.has-fade-right:not(:hover) .fade-right {
+        opacity: 0.9;
+    }
 }
