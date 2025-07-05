@@ -15,6 +15,22 @@ Botones hover #B25E48 (versión más intensa del coral)
 Botones secundarios Borde #D88F70,texto #D88F70,fondo transparente
 Hover en links #A8BCC9 (azul grisáceo claro) 
 Iconos activos #C1A46A (oro suave)*/
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  overflow-y: auto;
+  height: 100%;
+  scroll-behavior: smooth;
+}
+
 /* ——— Dark overlay  ——— */
 .drawer-overlay {
   position: fixed;

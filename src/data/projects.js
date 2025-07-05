@@ -3,7 +3,7 @@ export default [
     {
 
         id: 'pulse-store',
-        title: 'Pulse Store',
+        title: 'Pulse bike store',
         description: 'E-commerce site for bikes in Belgium.',
         role: 'Front-end Developer - Web Integrator',
         responsibilities:'',
@@ -304,7 +304,7 @@ export default [
     },
     {
         id: 'nio-teas-shopify-challenge',
-        title: 'Nio Teas – Shopify Product Page Redesign',
+        title: 'Shopify product page redesign',
         description: 'Redesign of a product detail page for a Swiss Shopify-based tea brand, delivered as part of a technical challenge.',
         shortDescription: 'A UX/UI redesign challenge that led to my first job offer in a Zürich-based agency.',
         role: 'UX/UI Designer',
@@ -353,7 +353,7 @@ export default [
     },
     {
         id: 'apropos-match',
-        title: 'Apropos Match Redesign',
+        title: 'Apropos match redesign',
         description: 'Technical challenge to improve match visualization for a recruiting platform.',
         shortDescription:
             'Redesign of the match card component in a job matching platform, focusing on clarity and usability.',
@@ -374,7 +374,7 @@ export default [
         challenge:
             'The main challenge was the lack of clarity in how match scores were presented. The initial design used percentage bars, but users found them confusing. The brief asked to improve match understanding, highlight alignment areas, and clarify next steps, within an estimated 4-hour delivery window.',
         
-        challengePdf: '/assets/docs/brief-apropos.pdf',
+        challengePdf: '/assets/docs/apropos-brief.pdf',
 
         goals:
             'Design a better way to present match information in the company (job seeker) view. Implement a functioning prototype and deliver a short presentation explaining the rationale.',
@@ -388,7 +388,7 @@ export default [
         wireframes:
             'I created both hand-drawn and digital wireframes to plan the match card redesign, focusing on grouping information meaningfully and simplifying complexity.',
 
-        wireframeImage: '/assets/apropos-wireframes.png',
+        wireframeImage: '/public/assets/matching-apropos-wireframe.png',
 
         finalDesign:
             'The final prototype includes an interactive match card component with personality bars, tag filters, explanation tooltips, and annotations. The design is modular and easily extendable.',
@@ -404,7 +404,7 @@ export default [
         outcomePdf:'/assets/docs/apropos-presentation_compressed.pdf',
 
         learnings:
-            'I learned to ask more targeted questions early in the process instead of assuming constraints. I also realized the importance of aligning deliverables with not only explicit, but also implicit expectations — and of making strategic reasoning more visible within UX decisions.'
+            'I learned to ask more targeted questions early in the process instead of assuming constraints. I also realized the importance of aligning deliverables with not only explicit, but also implicit expectations, and of making strategic reasoning more visible within UX decisions.'
     }
 
 

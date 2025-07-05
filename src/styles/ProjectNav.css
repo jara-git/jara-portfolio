@@ -113,6 +113,7 @@ Iconos activos #C1A46A (oro suave)*/
 .project-detail-container {
   display: flex;
   flex-direction: row;
+  height: 100%;
 }
 .project-detail-container .project-nav {
   width: 220px;

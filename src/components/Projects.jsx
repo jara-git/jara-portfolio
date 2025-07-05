@@ -15,38 +15,40 @@ function Projects({ onSelect }) {
     const scrollRef1 = useRef(null);
     const scrollRef2 = useRef(null);
 
-    const [showLeftFade1, setShowLeftFade1] = useState(false);
-    const [showRightFade1, setShowRightFade1] = useState(false);
-    const [showLeftFade2, setShowLeftFade2] = useState(false);
-    const [showRightFade2, setShowRightFade2] = useState(false);
+    const [fadeState, setFadeState] = useState({
+        left1: false, right1: false,
+        left2: false, right2: false
+    });
 
-    const updateFade = (ref, setLeft, setRight) => {
+    const updateFade = (ref, leftKey, rightKey) => {
         const el = ref.current;
         if (!el) return;
         const { scrollLeft, scrollWidth, clientWidth } = el;
-        setLeft(scrollLeft > 0);
-        setRight(scrollLeft + clientWidth < scrollWidth - 1);
+        setFadeState(prev => ({
+            ...prev,
+            [leftKey]: scrollLeft > 0,
+            [rightKey]: scrollLeft + clientWidth < scrollWidth - 1
+        }));
     };
 
-    const handleWheel = (ref) => (e) => {
+    const handleWheel = (ref, leftKey, rightKey) => (e) => {
         const el = ref.current;
         if (el) {
-            e.preventDefault();
             el.scrollLeft += e.deltaY;
+            updateFade(ref, leftKey, rightKey); // actualizar fades tras el scroll
         }
     };
 
     useEffect(() => {
-        updateFade(scrollRef1, setShowLeftFade1, setShowRightFade1);
-        updateFade(scrollRef2, setShowLeftFade2, setShowRightFade2);
+        updateFade(scrollRef1, 'left1', 'right1');
+        updateFade(scrollRef2, 'left2', 'right2');
 
         const handleResize = () => {
-            updateFade(scrollRef1, setShowLeftFade1, setShowRightFade1);
-            updateFade(scrollRef2, setShowLeftFade2, setShowRightFade2);
+            updateFade(scrollRef1, 'left1', 'right1');
+            updateFade(scrollRef2, 'left2', 'right2');
         };
 
         window.addEventListener('resize', handleResize);
-
         return () => window.removeEventListener('resize', handleResize);
     }, []);
 
@@ -60,59 +62,72 @@ function Projects({ onSelect }) {
 
     return (
         <section className="projects-section" id="projects">
-            <h2>Selected Projects</h2>
-            <div
-                className="scroll-container"
-                ref={scrollRef1}
-                onWheel={handleWheel(scrollRef1)}
-                onScroll={() => updateFade(scrollRef1, setShowLeftFade1, setShowRightFade1)}
-            >
-                {showLeftFade1 && <div className="fade-left" />}
-                <div className="project-row">
-                    {realProjects.map(project => (
-                        <div
-                            key={project.id}
-                            className="project-card"
-                            onClick={() => onSelect(project)}
-                            tabIndex={0}
-                        >
-                            <span className="project-badge client">Client</span>
-                            <img
-                                src={project.image || placeholderImage}
-                                alt={project.title || 'Project image'}
-                            />
-                            <h3>{project.title || 'Untitled Project'}</h3>
-                            <p className="project-summary">{project.description || 'No description available.'}</p>
-                        </div>
-                    ))}
+            <div className="section-container">
+                <h2>Selected Projects</h2>
+                <div
+                    className="scroll-container"
+                    ref={scrollRef1}
+                    onWheel={handleWheel(scrollRef1, 'left1', 'right1')}
+                    onScroll={() => updateFade(scrollRef1, 'left1', 'right1')}
+                >
+                    {fadeState.left1 && <div className="fade-left" />}
+                    <div className="project-row">
+                        {realProjects.map(project => (
+                            <div
+                                key={project.id}
+                                className="project-card"
+                                onClick={() => onSelect(project)}
+                                tabIndex={0}
+                            >
+                                <span className="project-badge client">Client</span>
+                                <img
+                                    src={project.image || placeholderImage}
+                                    alt={project.title || 'Project image'}
+                                />
+                                <h3>{project.title || 'Untitled Project'}</h3>
+                                <p className="project-summary">{project.description || 'No description available.'}</p>
+                            </div>
+                        ))}
+                    </div>
+                    {fadeState.right1 && <div className="fade-right" />}
                 </div>
-                {showRightFade1 && <div className="fade-right" />}
             </div>
 
-            <h2>UX Challenges & Early Work</h2>
-            <div
-                className="scroll-container"
-                ref={scrollRef2}
-                onWheel={handleWheel(scrollRef2)}
-                onScroll={() => updateFade(scrollRef2, setShowLeftFade2, setShowRightFade2)}
-            >
-                {showLeftFade2 && <div className="fade-left" />}
-                <div className="project-row">
-                    {otherProjects.map(project => {
-                        const tag = project.tags.find(t =>
-                            ['Technical Challenge', 'Hackathon', 'Early Work'].includes(t)
-                        );
-                        return (
-                            <div key={project.id} className="project-card" onClick={() => onSelect(project)}>
-                                <span className={`project-badge ${tag?.toLowerCase().replace(' ', '-')}`}>{tag}</span>
-                                <img src={project.image || placeholderImage} alt={project.title} />
-                                <h3>{project.title}</h3>
-                                <p className="project-summary">{project.description}</p>
-                            </div>
-                        );
-                    })}
+            <div className="section-container">
+                <h2>UX Challenges & Early Work</h2>
+                <div
+                    className="scroll-container"
+                    ref={scrollRef2}
+                    onWheel={handleWheel(scrollRef2, 'left2', 'right2')}
+                    onScroll={() => updateFade(scrollRef2, 'left2', 'right2')}
+                >
+                    {fadeState.left2 && <div className="fade-left" />}
+                    <div className="project-row">
+                        {otherProjects.map(project => {
+                            const tag = project.tags.find(t =>
+                                ['Technical Challenge', 'Hackathon', 'Early Work'].includes(t)
+                            );
+                            return (
+                                <div
+                                    key={project.id}
+                                    className="project-card"
+                                    onClick={() => onSelect(project)}
+                                >
+                                    <span className={`project-badge ${tag?.toLowerCase().replace(' ', '-')}`}>
+                                        {tag}
+                                    </span>
+                                    <img
+                                        src={project.image || placeholderImage}
+                                        alt={project.title}
+                                    />
+                                    <h3>{project.title}</h3>
+                                    <p className="project-summary">{project.description}</p>
+                                </div>
+                            );
+                        })}
+                    </div>
+                    {fadeState.right2 && <div className="fade-right" />}
                 </div>
-                {showRightFade2 && <div className="fade-right" />}
             </div>
         </section>
     );

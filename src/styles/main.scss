@@ -4,6 +4,22 @@
 @use './globals' as globals;
 @use './buttons' as buttons;
 
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  overflow-y: auto;
+  height: 100%;
+  scroll-behavior: smooth;
+}
+
 // Titles with Century Gothic and letter spacing
 h1,
 h2,

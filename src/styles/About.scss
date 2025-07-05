@@ -1,27 +1,74 @@
 @use '../styles/variables' as vars;
 @use './mixins' as mixins;
+
 .about-section {
-    padding: 4rem 2rem;
     background-color: #f9f9f9;
-    text-align: center;
     color: vars.$color-grey-dark;
 
-    h2 {
-        font-size: 2rem;
-        margin-bottom: 1rem;
-        text-align: left;
-        letter-spacing: 0.5rem;
-        @include mixins.mobile {
-                font-size:1.5rem;
-                letter-spacing: 0.3rem;
-            }
-    }
+    // inner-container-aligned with the rest of content
+    .about-inner {
+        padding: 4rem 2rem;
 
-    p {
-        max-width: 800px;
-        margin: 0 auto;
-        font-size: 1.125rem;
-        line-height: 1.6;
-        text-align: left;
+        h2 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            letter-spacing: 0.5rem;
+            text-align: left;
+           
+
+            @include mixins.mobile {
+                font-size: 1.5rem;
+                letter-spacing: 0.3rem;
+                
+            }
+        }
+
+        .philosophy-text {
+            font-size: 1.125rem;
+            line-height: 1.6;
+            text-align: left;
+            margin-bottom: 3rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .skills-set {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            max-width: 800px;
+            margin: 0 auto;
+
+            .skill-item {
+                display: flex;
+                align-items: flex-start;
+                gap: 1rem;
+                font-size: 1rem;
+                line-height: 1.5;
+                text-align: left;
+
+                img {
+                    width: 2rem;
+                    height: 2rem;
+                    flex-shrink: 0;
+                    margin-top: 0.15rem;
+                }
+
+                .skill-text {
+                    strong {
+                        font-weight: vars.$font-weight-semibold;
+                    }
+                }
+
+                @include mixins.mobile {
+                    font-size: 0.95rem;
+
+                    img {
+                        width: 1.6rem;
+                        height: 1.6rem;
+                    }
+                }
+            }
+        }
     }
 }

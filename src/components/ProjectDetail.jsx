@@ -62,14 +62,14 @@ export default function ProjectDetail({ project, onClose }) {
 
     const sectionImages = {
         overview: project.image,
-        challenge: '/assets/img-ProjectDetails/challenge.svg',
-        goals: '/assets/img-ProjectDetails/goal.svg',
-        research: '/assets/img-ProjectDetails/research.svg',
-        approach: '/assets/img-ProjectDetails/approach.svg',
-        wireframes: '/assets/img-ProjectDetails/wireframe.svg',
-        design: '/assets/img-ProjectDetails/final-design.svg',
-        outcome: '/assets/img-ProjectDetails/outcome.svg',
-        learnings: '/assets/img-ProjectDetails/learnings.svg'
+        challenge: '/public/assets/img-ProjectDetails/challenge-2_challenge-2.svg',
+        goals: '/public/assets/img-ProjectDetails/goals-23.svg',
+        research: '/public/assets/img-ProjectDetails/research-23.svg',
+        approach: '/public/assets/img-ProjectDetails/approach_approach.svg',
+        wireframes: '/public/assets/img-ProjectDetails/wireframes_wireframes.svg',
+        design: '/public/assets/img-ProjectDetails/design_design.svg',
+        outcome: '/public/assets/img-ProjectDetails/outcome_outcome-28.svg',
+        learnings: '/public/assets/img-ProjectDetails/learnings_learnings.svg'
     };
 
     const combinedDesign = (

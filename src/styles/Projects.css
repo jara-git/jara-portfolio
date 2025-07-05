@@ -19,6 +19,14 @@ Iconos activos #C1A46A (oro suave)*/
   padding: 4rem 2rem;
   background: #F9F6F0;
 }
+.projects-section .section-container {
+  margin: 0 auto;
+}
+@media (max-width: 480px) {
+  .projects-section .section-container {
+    padding: 2rem 1rem;
+  }
+}
 .projects-section h2 {
   font-family: "Century Gothic", CenturyGothic, AppleGothic, sans-serif;
   font-size: 2rem;
@@ -155,20 +163,22 @@ Iconos activos #C1A46A (oro suave)*/
   position: absolute;
   top: 0;
   bottom: 0;
-  width: 40px;
+  width: 60px;
   pointer-events: none;
-  z-index: 1;
-  transition: opacity 0.2s ease;
+  z-index: 3;
+  opacity: 0.9;
+  transition: opacity 0.3s ease-in-out;
+  will-change: opacity;
 }
 
 .fade-left {
   left: 0;
-  background: linear-gradient(to right, #F9F6F0 0%, transparent 100%);
+  background: linear-gradient(to right, #F9F6F0 0%, rgba(249, 246, 240, 0) 100%);
 }
 
 .fade-right {
   right: 0;
-  background: linear-gradient(to left, #F9F6F0 0%, transparent 100%);
+  background: linear-gradient(to left, #F9F6F0 0%, rgba(249, 246, 240, 0) 100%);
 }
 
 .scroll-container:nth-of-type(1) {

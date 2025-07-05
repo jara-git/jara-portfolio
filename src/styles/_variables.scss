@@ -4,6 +4,7 @@
 
 // Core palette
 $color-base-bg: #F9F6F0; // warm white  (antes $color-background)
+$lighter-base-bg: lighten($color-base-bg, 3%); // Lighten by 3%
 $color-section-bg: #F3EBDD; // light cream (cards / alt sections)
 $color-white: #faf8f4;
 

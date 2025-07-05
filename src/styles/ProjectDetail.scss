@@ -1,6 +1,7 @@
 @use "../styles/variables" as vars;
 @use "../styles/mixins" as m;
 
+
 /* ——————————————— CONTAINER AND GRID ——————————————— */
 
 .project-detail-container .project-detail-content {
@@ -295,7 +296,9 @@ h2 {
     display: flex;
     align-items: center;
     justify-content: center;
-    z-index: 1000;
+    z-index: 9999;
+
+    
     cursor: zoom-out;
     button {
         font-weight: 600;

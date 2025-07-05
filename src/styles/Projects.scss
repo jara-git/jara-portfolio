@@ -4,7 +4,13 @@
 .projects-section {
     padding: v.$space-2 * 4 v.$space-2 * 2;
     background: v.$color-base-bg;
+.section-container {
+        margin: 0 auto;
 
+        @include mx.mobile {
+            padding: 2rem 1rem;
+        }
+    }
     h2 {
         font-family: v.$font-family-base;
         font-size: 2rem;
@@ -158,20 +164,22 @@
     position: absolute;
     top: 0;
     bottom: 0;
-    width: 40px;
+    width: 60px; // un poco más ancho para enfatizar el efecto
     pointer-events: none;
-    z-index: 1;
-    transition: opacity 0.2s ease;
+    z-index: 3;
+    opacity: 0.9;
+    transition: opacity 0.3s ease-in-out;
+    will-change: opacity;
 }
 
 .fade-left {
     left: 0;
-    background: linear-gradient(to right, v.$color-base-bg 0%, transparent 100%);
+    background: linear-gradient(to right, v.$color-base-bg 0%, rgba(v.$color-base-bg, 0) 100%);
 }
 
 .fade-right {
     right: 0;
-    background: linear-gradient(to left, v.$color-base-bg 0%, transparent 100%);
+    background: linear-gradient(to left, v.$color-base-bg 0%, rgba(v.$color-base-bg, 0) 100%);
 }
 
 .scroll-container:nth-of-type(1) {
@@ -179,5 +187,6 @@
 }
 
 .scroll-container:nth-of-type(2){
-    background-color: lighten(v.$color-base-bg, 3%);
+    background-color: v.$lighter-base-bg;
+    
 }
