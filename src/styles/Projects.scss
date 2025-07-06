@@ -20,6 +20,13 @@
         }
     }
 
+    .challenges-early-work-title {
+        margin-top: 4rem;
+        @include mx.mobile {
+                margin-top: 2rem;
+            }
+    }
+
     .scroll-container {
         overflow-x: auto;
         scroll-snap-type: x mandatory;

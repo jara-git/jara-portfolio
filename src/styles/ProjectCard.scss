@@ -1,4 +1,3 @@
-
 @use "./variables" as v;
 @use "./mixins" as mx;
 
@@ -10,6 +9,7 @@
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.04);
     transition: all 0.2s ease;
     overflow: hidden;
+    width: 100%;
 
     &.overview {
         grid-column: span 2;
@@ -20,6 +20,8 @@
                 height: auto;
                 border-radius: 12px;
                 margin-bottom: 1rem;
+                object-fit: cover;
+                display: block;
             }
         }
 
@@ -30,7 +32,6 @@
     }
 
     &.default {
-
         .card-header {
             display: flex;
             align-items: center;
@@ -41,6 +42,7 @@
                 height: 64px;
                 border-radius: 50%;
                 object-fit: cover;
+                display: block;
             }
 
             .card-title {
@@ -55,24 +57,40 @@
         line-height: 1.5;
         margin-top: 1rem;
     }
- @include mx.large-screen {
-     flex: 0 0 400px;
-     max-width: 400px;
 
-     img {
-         max-height: 220px;
-     }
+    .section-links {
+        margin-top: 1.5rem;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1rem;
+    }
 
-     h3 {
-         font-size: 1.3rem;
-     }
+    // Sólo aplicamos límites para tarjetas normales en pantallas grandes
+    @include mx.large-screen {
+        &.default {
+            flex: 0 0 400px;
+            max-width: 400px;
 
-     .project-summary {
-         font-size: 1rem;
-     }
- }
-    
+            img {
+                max-height: 220px;
+            }
+
+            h3 {
+                font-size: 1.3rem;
+            }
+
+            .project-summary {
+                font-size: 1rem;
+            }
+        }
+
+        &.overview {
+            flex: 1 1 100%;
+            max-width: 100%;
+
+            .card-image {
+                max-height: none;
+            }
+        }
+    }
 }
-
-
- 

@@ -394,8 +394,8 @@ export default [
             'The final prototype includes an interactive match card component with personality bars, tag filters, explanation tooltips, and annotations. The design is modular and easily extendable.',
 
         finalScreens: [
-            '/assets/apropos-cards-1.png',
-            '/assets/apropos-cards-2.png'
+            '/public/assets/apropos-mobile-mockup.png',
+            '/public/assets/desktop-mockup-apropos.png'
         ],
 
         outcome:

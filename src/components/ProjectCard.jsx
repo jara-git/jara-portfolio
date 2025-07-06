@@ -1,27 +1,28 @@
 import React from 'react';
 import '../styles/ProjectCard.scss';
-import { ExternalLink } from 'lucide-react';
 
-const ProjectCard = ({ type, title, image, children, links }) => {
+const ProjectCard = ({ type, title, image, children, links, onImageClick }) => {
+    const isOverview = type === 'overview';
+
     return (
-        <div className={`project-card ${type === 'overview' ? 'overview' : 'default'}`}>
+        <div className={`project-card ${isOverview ? 'overview' : 'default'}`}>
             <div className="card-header">
                 <img
                     src={image}
                     alt={`${title} illustration`}
                     tabIndex="0"
-                    className={`card-image ${type === 'overview' ? 'rectangular' : 'circular'}`}
+                    className={`card-image ${isOverview ? 'rectangular' : 'circular'}`}
+                    onClick={onImageClick}
+                    style={onImageClick ? { cursor: 'zoom-in' } : {}}
                 />
-                {type !== 'overview' && <h3 className="card-title">{title}</h3>}
+                {!isOverview && <h3 className="card-title">{title}</h3>}
             </div>
 
-            {type === 'overview' && <h2 className="card-title">{title}</h2>}
+            {isOverview && <h2 className="card-title">{title}</h2>}
 
-            <div className="card-content">
-                {children}
-            </div>
+            <div className="card-content">{children}</div>
 
-            {type === 'overview' && links && links.length > 0 && (
+            {isOverview && links && links.length > 0 && (
                 <div className="section-links">
                     {links.map((link, i) => (
                         <a
@@ -31,7 +32,6 @@ const ProjectCard = ({ type, title, image, children, links }) => {
                             rel="noopener noreferrer"
                             className="section-link"
                         >
-                            <ExternalLink size={14} style={{ marginRight: '4px' }} />
                             {link.label}
                         </a>
                     ))}

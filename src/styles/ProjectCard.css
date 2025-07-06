@@ -72,4 +72,13 @@ Iconos activos #C1A46A (oro suave)*/
   .project-card .project-summary {
     font-size: 1rem;
   }
+}
+
+.project-card.full-width {
+  grid-column: 1/-1;
+  flex: 1 1 100%;
+  max-width: 100%;
+}
+.project-card.full-width img {
+  max-height: none;
 }/*# sourceMappingURL=ProjectCard.css.map */

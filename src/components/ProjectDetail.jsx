@@ -91,6 +91,9 @@ export default function ProjectDetail({ project, onClose }) {
         </>
     );
 
+    const isMobile = window.innerWidth <= 768;
+
+
     return (
         <AnimatePresence>
             <motion.div
@@ -127,28 +130,49 @@ export default function ProjectDetail({ project, onClose }) {
 
                         {/* OVERVIEW */}
                         <section id="overview" className="project-section">
-                            <ProjectCard type="overview" title="Overview" image={sectionImages.overview}>
+                            <ProjectCard
+                                type="overview"
+                                title="Overview"
+                                image={sectionImages.overview}
+                                onImageClick={() => {
+                                    if (isMobile && sectionImages.overview) {
+                                        openLightbox([sectionImages.overview]);
+                                    }
+                                }}>
+                                {/* <div className="overview-image-wrapper">
+                                    <img
+                                        src={sectionImages.overview}
+                                        alt={`${project.title} overview`}
+                                        className="section-image-full overview-image"
+                                        onClick={() => {
+                                            if (window.innerWidth <= 768) openLightbox([sectionImages.overview]);
+                                        }}
+                                    />
+                                </div> */}
+
                                 <p>{project.overview}</p>
+
                                 <div className="project-links">
                                     {project.demo && (
                                         <a href={project.demo} target="_blank" rel="noopener noreferrer" className="project-link-button">
-                                            <img src="/assets/img-ProjectDetails/demo.svg" alt="Live demo icon" />
+                                            <img src="/assets/img-ProjectDetails/icons-buttons/demo.svg" alt="Live demo icon" />
                                             Live Demo
                                         </a>
                                     )}
                                     {project.code && (
                                         <a href={project.code} target="_blank" rel="noopener noreferrer" className="project-link-button">
-                                            <img src="/assets/img-ProjectDetails/code.svg" alt="Code icon" />
+                                            <img src="/assets/img-ProjectDetails/icons-buttons/code.svg" alt="Code icon" />
                                             Code
                                         </a>
                                     )}
                                     {project.prototype && (
                                         <a href={project.prototype} target="_blank" rel="noopener noreferrer" className="project-link-button">
-                                            <img src="/assets/img-ProjectDetails/prototype.svg" alt="Prototype icon" />
+                                            <img src="/assets/img-ProjectDetails/icons-buttons/prototype.svg" alt="Prototype icon" />
                                             Prototype
                                         </a>
                                     )}
                                 </div>
+
                                 {project.note && (
                                     <p className="project-note">
                                         <strong>Note:</strong>
@@ -157,6 +181,7 @@ export default function ProjectDetail({ project, onClose }) {
                                 )}
                             </ProjectCard>
                         </section>
+
 
                         {/* CHALLENGE */}
                         {project.challenge && (
@@ -174,7 +199,7 @@ export default function ProjectDetail({ project, onClose }) {
                                     {project.challengePdf && (
                                         <ExternalButton
                                             href={project.challengePdf}
-                                            icon="/assets/img-ProjectDetails/pdf.svg"
+                                            icon="/assets/img-ProjectDetails/icons-buttons/pdf.svg"
                                             label="View challenge brief"
                                         />
                                     )}
@@ -199,7 +224,7 @@ export default function ProjectDetail({ project, onClose }) {
                                     {project.researchPdf && (
                                         <ExternalButton
                                             href={project.researchPdf}
-                                            icon="/assets/img-ProjectDetails/pdf.svg"
+                                            icon="/assets/img-ProjectDetails/icons-buttons/pdf.svg"
                                             label="Open full PDF"
                                         />
                                     )}
@@ -261,7 +286,7 @@ export default function ProjectDetail({ project, onClose }) {
                                     {project.outcomePdf && (
                                         <ExternalButton
                                             href={project.outcomePdf}
-                                            icon="/assets/img-ProjectDetails/pdf.svg"
+                                            icon="/assets/img-ProjectDetails/icons-buttons/pdf.svg"
                                             label="View Final Presentation"
                                         />
                                     )}

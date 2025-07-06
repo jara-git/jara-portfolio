@@ -4,7 +4,7 @@
 .about-section {
     background-color: #f9f9f9;
     color: vars.$color-grey-dark;
-    padding: 0 4rem;
+    // padding: 0 4rem;
     @include mixins.mobile {
         padding: 0;
     }
@@ -13,7 +13,7 @@
     .about-inner {
         padding: 4rem 2rem;
         @include mixins.mobile {
-        padding: 2rem 2rem
+        padding: 2rem 2rem;
     }
 
         h2 {
