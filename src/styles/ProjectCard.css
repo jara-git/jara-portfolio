@@ -1,3 +1,20 @@
+@charset "UTF-8";
+/*Rol en UI Color Hex Comentario Fondo base Blanco cálido #F9F6F0 Luminoso y suave,
+da calidez Texto principal Gris oscuro #1A1A1A Legible y elegante 
+Texto secundario Gris medio #5C5C5C Neutro y no intrusivo 
+Color de énfasis Coral suave #D88F70 Para ilustraciones,
+botones clave Hover/acento Verde salvia #BFC8B2 Refrescante,
+menos visto 
+Links activos Azul grisáceo #A8BCC9 Tranquilo pero reconocible 
+Fondo de secciones Crema claro #F3EBDD Para bloques o tarjetas 
+Borde o detalle Oro viejo #C1A46A 
+Líneas finas o iconos decorativos Elemento UI Color sugerido Títulos #1A1A1A (o #3A2E2E si quieres un toque más cálido) 
+Texto #5C5C5C o #4B4B4B 
+Botones primarios Fondo #D88F70+texto blanco (#FFFFFF) 
+Botones hover #B25E48 (versión más intensa del coral)
+Botones secundarios Borde #D88F70,texto #D88F70,fondo transparente
+Hover en links #A8BCC9 (azul grisáceo claro) 
+Iconos activos #C1A46A (oro suave)*/
 .project-card {
   border: 1px solid #e0e0e0;
   border-radius: 16px;
@@ -5,6 +22,7 @@
   background-color: #fafafa;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.04);
   transition: all 0.2s ease;
+  overflow: hidden;
 }
 .project-card.overview {
   grid-column: span 2;
@@ -39,4 +57,19 @@
   font-size: 1rem;
   line-height: 1.5;
   margin-top: 1rem;
+}
+@media (min-width: 1440px) {
+  .project-card {
+    flex: 0 0 400px;
+    max-width: 400px;
+  }
+  .project-card img {
+    max-height: 220px;
+  }
+  .project-card h3 {
+    font-size: 1.3rem;
+  }
+  .project-card .project-summary {
+    font-size: 1rem;
+  }
 }/*# sourceMappingURL=ProjectCard.css.map */

@@ -20,6 +20,13 @@
     }
 }
 
+
+@mixin large-screen {
+    @media (min-width: 1440px) {
+        @content;
+    }
+}
+
 // —— Utilities ——
 @mixin flex-center {
     display: flex;

@@ -1,3 +1,7 @@
+
+@use "./variables" as v;
+@use "./mixins" as mx;
+
 .project-card {
     border: 1px solid #e0e0e0;
     border-radius: 16px;
@@ -5,6 +9,7 @@
     background-color: #fafafa;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.04);
     transition: all 0.2s ease;
+    overflow: hidden;
 
     &.overview {
         grid-column: span 2;
@@ -50,4 +55,24 @@
         line-height: 1.5;
         margin-top: 1rem;
     }
+ @include mx.large-screen {
+     flex: 0 0 400px;
+     max-width: 400px;
+
+     img {
+         max-height: 220px;
+     }
+
+     h3 {
+         font-size: 1.3rem;
+     }
+
+     .project-summary {
+         font-size: 1rem;
+     }
+ }
+    
 }
+
+
+ 

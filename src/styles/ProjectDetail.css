@@ -290,6 +290,7 @@ h2 {
   align-items: center;
   justify-content: center;
   z-index: 9999;
+  overflow: hidden;
   cursor: zoom-out;
 }
 .lightbox button {
@@ -345,6 +346,7 @@ h2 {
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
   -o-object-fit: contain;
      object-fit: contain;
+  overflow: hidden;
 }
 
 /* ——————————————— PDF EMBED ——————————————— */

@@ -2,87 +2,89 @@
 @use "./mixins" as mx;
 
 .projects-section {
-    padding: v.$space-2 * 4 v.$space-2 * 2;
+    padding: 4rem 0;
     background: v.$color-base-bg;
-.section-container {
-        margin: 0 auto;
-        .challenges-early-work-title {
-                margin-top: 4rem;
-            }
 
-        @include mx.mobile {
-            padding: 2rem 1rem;
-        }
-    }
     h2 {
         font-family: v.$font-family-base;
         font-size: 2rem;
         font-weight: v.$font-weight-semibold;
         letter-spacing: 0.08em;
         color: v.$color-text-main;
+        margin-left: 2rem;
         margin-bottom: v.$space-2 * 1.5;
-        
+
         @include mx.mobile {
             font-size: 1.5rem;
-            letter-spacing: 0.06em;
+            margin-left: 1rem;
         }
-                
     }
-        
-       
 
-    // -------- Horizontal scroll wrapper --------
     .scroll-container {
         overflow-x: auto;
-        scroll-snap-type: x mandatory; // enable snap
+        scroll-snap-type: x mandatory;
         -webkit-overflow-scrolling: touch;
-        position: relative;
-        overflow-x: auto;
-        overflow-y: hidden;
-        padding: v.$space-2 0;
-        scroll-behavior: smooth;
         display: flex;
-        align-items: center;
+        align-items: flex-start;
+        gap: 2rem;
+        padding: 2rem;
+        scroll-behavior: smooth;
+
+        @include mx.mobile {
+            padding: 1rem;
+            gap: 1.5rem;
+        }
     }
 
     .project-row {
         display: flex;
-        gap: v.$space-2 * 2;
-        padding: 0 v.$space-2 * 2;
-        align-items: flex-start;
+        gap: 2rem;
+        min-width: max-content;
 
         @include mx.mobile {
-            padding: 0;
+            gap: 1rem;
         }
     }
 
-    // -------- Individual card --------
     .project-card {
         scroll-snap-align: start;
-        height: auto;
-        position: relative;
-        flex: 0 0 300px;
-        max-height: 480px;
-        min-height: 320px;
-        max-width: 300px;
+        flex: 0 0 360px;
+        max-width: 360px;
         background: v.$color-section-bg;
         border-radius: v.$radius-l;
         box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
-        padding: v.$space-2;
+        padding: 1.5rem;
         cursor: pointer;
         will-change: transform;
-        @include mx.smooth;
+        transition: transform 0.3s ease;
+
+        &:hover,
+        &:focus-within {
+            transform: scale(1.04);
+            z-index: 2;
+            box-shadow: 0 6px 14px rgba(0, 0, 0, 0.1);
+
+            .project-summary {
+                -webkit-line-clamp: unset;
+                line-clamp: unset;
+                display: block;
+                overflow: visible;
+                white-space: normal;
+                max-height: none;
+                opacity: 1;
+            }
+        }
 
         img {
             width: 100%;
             border-radius: v.$radius-m;
-            max-height: 180px;
+            max-height: 200px;
             object-fit: cover;
             display: block;
         }
 
         h3 {
-            margin-top: 0.75rem;
+            margin-top: 1rem;
             font-family: v.$font-family-base;
             font-size: 1.2rem;
             font-weight: v.$font-weight-semibold;
@@ -91,7 +93,6 @@
 
         .project-summary {
             color: v.$color-text-secondary;
-            position: relative;
             font-size: 0.95rem;
             line-height: 1.4;
             margin-top: 0.5rem;
@@ -105,104 +106,68 @@
             transition: all 0.3s ease;
         }
 
-        &:hover,
-        &:focus-within {
-            transform: scale(1.05);
-            z-index: 2;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-
-            .project-summary {
-                -webkit-line-clamp: unset;
-                line-clamp: unset;
-                display: block;
-                overflow: visible;
-                white-space: normal;
-                max-height: none;
-                opacity: 1;
-            }
-        }
-
-        // MOBILE: mantener truncado, sin hover
         @include mx.mobile {
-            .project-summary {
-                -webkit-line-clamp: 3;
-                line-clamp: 3;
-                max-height: 3.8em;
-                display: -webkit-box;
-                overflow: hidden;
-                white-space: normal;
-            }
+            flex: 0 0 280px;
         }
     }
-    //Badges
-.project-badge {
-    position: absolute;
-    top: v.$space-2 * 0.5;
-    right: v.$space-2 * 0.5;
-    font-size: 0.7rem;
-    text-transform: uppercase;
-    font-weight: bold;
-    background: v.$color-grey-dark;
-    color: v.$color-white;
-    padding: 0.2rem 0.5rem;
-    border-radius: v.$radius-s;
-    z-index: 2;
-    letter-spacing: 0.05em;
 
-    &.client {
-        background-color: v.$color-tag;
+    .project-badge {
+        position: absolute;
+        top: v.$space-2 * 0.5;
+        right: v.$space-2 * 0.5;
+        font-size: 0.7rem;
+        text-transform: uppercase;
+        font-weight: bold;
+        background: v.$color-grey-dark;
+        color: v.$color-white;
+        padding: 0.2rem 0.5rem;
+        border-radius: v.$radius-s;
+        z-index: 2;
+        letter-spacing: 0.05em;
+
+        &.client {
+            background-color: v.$color-tag;
+        }
+
+        &.challenge {
+            background-color: #c576dd;
+        }
+
+        &.early {
+            background-color: #5789e0;
+        }
     }
 
-    &.challenge {
-        background-color: #c576dd; // lilac tone
-    }
-
-    &.early {
-        background-color: #5789e0; // blue tone
-    }
-}
-}
-
-// -------- Fade edges (only if overflow) --------
-
-.scroll-container {
-    position: relative;
-    overflow-x: auto;
-    display: flex;
-    align-items: center;
-    scroll-behavior: smooth;
-    gap: 1rem;
-
+    // Fade edges
     .fade-left,
-        .fade-right {
-            position: absolute;
-            top: 0;
-            bottom: 0;
-            width: 40px; 
-            pointer-events: none;
-            z-index: 2;
-            
-        }
-    
-        .fade-left {
-            left: 0;
-            background: linear-gradient(to right, rgba(255, 255, 255, 1), rgba(255, 255, 255, 0));
-        }
-    
-        .fade-right {
-            right: 0;
-            background: linear-gradient(to left, #f9f6f096, #dae1e800);
-        }
-
-    //Show fades only if there is hidden content AND the user hovers over it
-    &:hover.has-fade-left .fade-left,
-    &:hover.has-fade-right .fade-right {
-        opacity: 0.9;
+    .fade-right {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        width: 40px;
+        pointer-events: none;
+        z-index: 2;
+        opacity: 0;
+        transition: opacity 0.3s ease;
     }
 
-    // For touch devices (without hover), show if scrolling is possible
-    &.has-fade-left:not(:hover) .fade-left,
-    &.has-fade-right:not(:hover) .fade-right {
-        opacity: 0.9;
+    .fade-left {
+        left: 0;
+        background: linear-gradient(to right, v.$color-base-bg, transparent);
+    }
+
+    .fade-right {
+        right: 0;
+        background: linear-gradient(to left, v.$color-base-bg, transparent);
+    }
+
+    .scroll-container:hover.has-fade-left .fade-left,
+    .scroll-container:hover.has-fade-right .fade-right {
+        opacity: 1;
+    }
+
+    .scroll-container.has-fade-left:not(:hover) .fade-left,
+    .scroll-container.has-fade-right:not(:hover) .fade-right {
+        opacity: 0.8;
     }
 }

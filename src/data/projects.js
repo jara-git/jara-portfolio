@@ -388,7 +388,7 @@ export default [
         wireframes:
             'I created both hand-drawn and digital wireframes to plan the match card redesign, focusing on grouping information meaningfully and simplifying complexity.',
 
-        wireframeImage: '/public/assets/matching-apropos-wireframe.png',
+        wireframeImage: '/assets/matching-apropos-wireframe.png',
 
         finalDesign:
             'The final prototype includes an interactive match card component with personality bars, tag filters, explanation tooltips, and annotations. The design is modular and easily extendable.',

@@ -4,10 +4,17 @@
 .about-section {
     background-color: #f9f9f9;
     color: vars.$color-grey-dark;
+    padding: 0 4rem;
+    @include mixins.mobile {
+        padding: 0;
+    }
 
     // inner-container-aligned with the rest of content
     .about-inner {
         padding: 4rem 2rem;
+        @include mixins.mobile {
+        padding: 2rem 2rem
+    }
 
         h2 {
             font-size: 2rem;
