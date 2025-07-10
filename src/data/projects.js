@@ -227,7 +227,7 @@ export default [
             // 'We created user personas and short UX questionnaires for parents of young children to identify pain points around dental hygiene. We reviewed studies and resources from pediatric dentists to better understand motivations, barriers and effective methods for teaching hygiene. We tested basic flows using low- fidelity prototypes and iterated based on feedback.',
             'We created user personas and UX questionnaires for parents of young children in Spain and Australia to identify key challenges around dental hygiene. We reviewed pediatric studies to understand motivations and barriers, and tested low-fidelity flows, iterating based on user feedback.',
 
-        researchPdf: '/assets/docs/questionaire-monster-teeth.pdf',
+        researchPdf: '/assets/docs/monster-teeth-research-intro.pdf',
         
         approach:
             'We brainstormed together and opted for a narrative-driven design using cute monsters as guides. We designed a UI system around joyful characters, colorful buttons, and clear navigation. We also created a timer and dynamic content section with educational tips. Rewards for brushing consistency. Custom illustrations to make the experience feel magical and relatable.',
@@ -394,8 +394,8 @@ export default [
             'The final prototype includes an interactive match card component with personality bars, tag filters, explanation tooltips, and annotations. The design is modular and easily extendable.',
 
         finalScreens: [
-            '/public/assets/apropos-mobile-mockup.png',
-            '/public/assets/desktop-mockup-apropos.png'
+            '/assets/apropos-mobile-mockup.png',
+            '/assets/desktop-mockup-apropos.png'
         ],
 
         outcome:

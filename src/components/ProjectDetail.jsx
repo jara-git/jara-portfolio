@@ -225,7 +225,7 @@ export default function ProjectDetail({ project, onClose }) {
                                         <ExternalButton
                                             href={project.researchPdf}
                                             icon="/assets/img-ProjectDetails/icons-buttons/pdf.svg"
-                                            label="Open full PDF"
+                                            label="View Research PDF"
                                         />
                                     )}
                                 </ProjectCard>
