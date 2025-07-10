@@ -7,11 +7,28 @@ function About() {
             <div className="about-inner">
                 <h2>Design Philosophy</h2>
                 <p className="philosophy-text">
-                    I believe in designing experiences that not only look good but also serve a purpose. My approach blends empathy, strategy, and creativity to craft interfaces that are meaningful and usable. Design, for me, is what makes a product speak, function, and belong. I design to connect people with systems, ideas with forms, function with meaning.
-
-                    I see design not as decoration, but as a quiet force that guides, reveals, and simplifies. It’s not about imposing a style, but about listening, distilling, and giving form to something that was already there, waiting to emerge. I move between the digital and the physical, the visual and the spatial, always working with clarity and intention, while leaving room for beauty and intuition.
-
-                    With fifteen years of experience across different disciplines —UI/UX and front-end development, set design, architecture, and visual arts— I bring a multidisciplinary lens to each project. I believe that good design lives at the intersection of logic and emotion, and my goal is to shape digital spaces that are both thoughtful and alive.
+                    I believe designing experiences is not just about visual appeal — it must serve a purpose.
+                </p>
+                <p className="philosophy-text">
+                    For me, design is what makes any product — whether a simple object or a complex system — work, speak, and belong.
+                </p>
+                <p className="philosophy-text">
+                    When I create interfaces, I draw on empathy, strategy, and creativity to give them meaning and usefulness. I design to connect people with systems, ideas with form, and function with intent — from the abstract to the concrete, from the intangible to the tangible.
+                </p>
+                <p className="philosophy-text">
+                    Design, to me, is not mere decoration. It carries a message, a structure — a layer that simplifies what's inside, helping us understand and use it.
+                </p>
+                <p className="philosophy-text">
+                    That’s why I don’t like to impose a style as if it were a whim. I begin by listening: what is the need, the function, the purpose, who is it for? Layer by layer, I strip things down until the solution starts to emerge.
+                </p>
+                <p className="philosophy-text">
+                    I move between the digital and the physical, the spatial and the visual — always with clarity and intention, while leaving room for beauty and intuition.
+                </p>
+                <p className="philosophy-text">
+                    With 15 years of experience across disciplines — UI/UX and front-end development, scenography, architecture, and visual arts — I approach each project from a multifaceted perspective.
+                </p>
+                <p className="philosophy-text">
+                    I believe good design breathes at the intersection of logic and emotion. My goal is to shape digital spaces that are thoughtful — and alive.
                 </p>
 
                 <h2>Skills & Strengths</h2>
