@@ -227,7 +227,7 @@ export default [
             // 'We created user personas and short UX questionnaires for parents of young children to identify pain points around dental hygiene. We reviewed studies and resources from pediatric dentists to better understand motivations, barriers and effective methods for teaching hygiene. We tested basic flows using low- fidelity prototypes and iterated based on feedback.',
             'We created user personas and UX questionnaires for parents of young children in Spain and Australia to identify key challenges around dental hygiene. We reviewed pediatric studies to understand motivations and barriers, and tested low-fidelity flows, iterating based on user feedback.',
 
-        researchPdf: '/assets/docs/monster-teeth-research-intro.pdf',
+        researchPdf: '/docs/monster-teeth-research-intro.pdf',
         
         approach:
             'We brainstormed together and opted for a narrative-driven design using cute monsters as guides. We designed a UI system around joyful characters, colorful buttons, and clear navigation. We also created a timer and dynamic content section with educational tips. Rewards for brushing consistency. Custom illustrations to make the experience feel magical and relatable.',
@@ -298,7 +298,7 @@ export default [
 
         outcome:
             'We successfully delivered a working MVP in 24 hours. The app addressed real-world challenges and could be adapted for use even beyond the pandemic.',
-        outcomePdf: '/assets/docs/La Pajita - Hackaton_compressed.pdf',
+        outcomePdf: '/docs/La Pajita - Hackaton_compressed.pdf',
         learnings:
             'This project taught us to self-organize under pressure and leverage each teammate’s strengths. We learned to prioritize fast, communicate clearly, and keep our focus tight on delivering value in a short time.'
     },
@@ -374,7 +374,7 @@ export default [
         challenge:
             'The main challenge was the lack of clarity in how match scores were presented. The initial design used percentage bars, but users found them confusing. The brief asked to improve match understanding, highlight alignment areas, and clarify next steps, within an estimated 4-hour delivery window.',
         
-        challengePdf: '/assets/docs/apropos-brief.pdf',
+        challengePdf: '/docs/apropos-brief.pdf',
 
         goals:
             'Design a better way to present match information in the company (job seeker) view. Implement a functioning prototype and deliver a short presentation explaining the rationale.',
@@ -401,7 +401,7 @@ export default [
         outcome:
             'Although this project was not selected for the final position, it allowed me to practice rapid prototyping, storytelling under time pressure, and reflect on how to communicate design intent more clearly. The process was valuable in surfacing areas for growth in strategic framing and presentation delivery.',
         
-        outcomePdf:'/assets/docs/apropos-presentation_compressed.pdf',
+        outcomePdf:'/docs/apropos-presentation_compressed.pdf',
 
         learnings:
             'I learned to ask more targeted questions early in the process instead of assuming constraints. I also realized the importance of aligning deliverables with not only explicit, but also implicit expectations, and of making strategic reasoning more visible within UX decisions.'
