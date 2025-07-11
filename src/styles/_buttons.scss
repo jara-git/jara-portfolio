@@ -108,4 +108,19 @@
             filter: none;
         }
     }
+        .button--contact {
+            background-color: #000;
+            color: #fff;
+            padding: 0.75rem 1.5rem;
+            border-radius: 4px;
+            text-decoration: none;
+            transition: background 0.3s;
+    
+            &:hover,
+            &:focus-visible {
+                background-color: #333;
+                outline: none;
+            }
+        }
 }
+

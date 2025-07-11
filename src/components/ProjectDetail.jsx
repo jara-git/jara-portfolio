@@ -261,7 +261,7 @@ export default function ProjectDetail({ project, onClose }) {
                                     {project.wireframeLink && (
                                         <ExternalButton
                                             href={project.wireframeLink}
-                                            icon="/assets/img-ProjectDetails/prototype-b.svg"
+                                            icon="/assets/img-ProjectDetails/icons-buttons/prototype.svg"
                                             label="View Mockup"
                                         />
                                     )}
