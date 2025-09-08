@@ -1,0 +1,97 @@
+@use '../../../styles/variables' as v;
+@use '../../../styles/buttons' as buttons;
+
+.monogram-pt {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 4rem;
+    max-width: 1100px;
+
+    &-container {
+        background: v.$color-section-bg;
+        border-radius: v.$radius-l;
+        padding: v.$space-3;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+
+        &:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 18px rgba(0, 0, 0, 0.12);
+        }
+
+        svg {
+            width: 320px;
+            height: 300px;
+            border: 1px solid v.$color-accent-sage;
+            background: v.$color-white;
+            border-radius: v.$radius-l;
+            box-shadow: 0 4px 14px rgba(0, 0, 0, 0.06);
+            margin-bottom: v.$space-2;
+        }
+
+        .monogram-desc {
+            font-size: 0.9rem;
+            color: v.$color-text-secondary;
+            margin-bottom: v.$space-2;
+            text-align: left;
+        }
+
+        .monogram-controls {
+            margin-top: v.$space-2;
+            width: 100%;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: v.$space-1;
+
+            label {
+                font-size: 0.8rem;
+                color: v.$color-text-secondary;
+                display: flex;
+                flex-direction: column;
+                gap: 0.2rem;
+            }
+
+            input,
+            select {
+                width: 100%;
+                padding: 0.2rem;
+                border-radius: v.$radius-s;
+                border: 1px solid #ddd;
+                font-size: 0.8rem;
+            }
+        }
+
+        .monogram-actions {
+            margin-top: v.$space-3;
+            display: flex;
+            gap: v.$space-2;
+            justify-content: center;
+
+            .button {
+                min-width: 150px;
+            }
+        }
+
+        // Responsive
+        @media (max-width: 768px) {
+            svg {
+                width: 100%;
+                height: auto;
+            }
+
+            .monogram-controls {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .monogram-controls {
+                grid-template-columns: 1fr;
+            }
+        }
+    }
+}

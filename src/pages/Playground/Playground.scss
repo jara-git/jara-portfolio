@@ -1,0 +1,18 @@
+@use '../../styles/variables' as v;
+
+.playground-page {
+    padding: v.$space-4;
+
+    h1 {
+        font-size: 2rem;
+        margin-bottom: v.$space-4;
+        text-align: center;
+    }
+
+    .playground-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+        gap: v.$space-4;
+        justify-items: center;
+    }
+}
