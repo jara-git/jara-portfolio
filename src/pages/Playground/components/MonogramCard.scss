@@ -22,7 +22,9 @@
             transform: translateY(-4px);
             box-shadow: 0 8px 18px rgba(0, 0, 0, 0.12);
         }
+    }
 
+    &-visual {
         svg {
             width: 320px;
             height: 300px;
@@ -32,6 +34,14 @@
             box-shadow: 0 4px 14px rgba(0, 0, 0, 0.06);
             margin-bottom: v.$space-2;
         }
+    }
+
+    &-info {
+        max-width: 640px;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
 
         .monogram-desc {
             font-size: 0.9rem;
@@ -75,20 +85,26 @@
                 min-width: 150px;
             }
         }
+    }
 
-        // Responsive
-        @media (max-width: 768px) {
+    // Responsive
+    @media (max-width: 768px) {
+        &-visual {
             svg {
                 width: 100%;
                 height: auto;
             }
+        }
 
+        &-info {
             .monogram-controls {
                 grid-template-columns: 1fr 1fr;
             }
         }
+    }
 
-        @media (max-width: 480px) {
+    @media (max-width: 480px) {
+        &-info {
             .monogram-controls {
                 grid-template-columns: 1fr;
             }

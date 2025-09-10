@@ -1,79 +1,84 @@
 @use '../styles/variables' as vars;
 @use '../styles/mixins' as mixins;
 
-.drawer-open .navbar {
-    z-index: 0;
-    pointer-events: none;
-    opacity: 0.5;
-}
-
 .navbar {
-    position: sticky;
-    top: 0;
-    background-color: vars.$color-base-bg;
-    padding: calc(vars.$space-2* 3.125) calc(vars.$space-2* 3.75) 0;
-    z-index: 1000;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    padding: 1rem 2rem;
+    position: sticky;
+    top: 0;
+    background-color: vars.$color-base-bg;
 
-    @include mixins.mobile {
-        padding: calc(vars.$space-2* 1.25) calc(vars.$space-2* 1.875) 0;
-        flex-direction: row;
-        align-content: center;
-    }
-
-    .logo-container {
+    .navbar-left {
         display: flex;
         align-items: center;
     }
 
-    .logo {
-        height: 32px;
-        width: auto;
-    }
-
     .nav-links {
         display: flex;
-        gap: calc(vars.$space-2* 2);
+        gap: 1.5rem;
+
+        @include mixins.mobile {
+            display: none; // oculto en móvil
+            flex-direction: column;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            width: 100%;
+            padding: 1rem 2rem;
+            background-color: vars.$color-base-bg;
+        }
 
         a {
-            font-family: vars.$font-family-base;
-            color: vars.$color-text-secondary;;
             text-decoration: none;
-            font-weight: vars.$font-weight-normal;
-            position: relative;
-            padding-bottom: calc(vars.$space-2* 0.9);
-            transition: all 0.3s ease;
-
-            &::after {
-                content: "";
-                position: absolute;
-                left: 50%;
-                transform: translateX(-50%) scaleX(0);
-                transform-origin: center;
-                bottom: 0;
-                width: 1.2rem;
-                height: 1.5px;
-                background-color: vars.$color-text-secondary;
-                opacity: 0;
-                transition: all 0.3s ease;
-            }
-
-            &:hover::after {
-                opacity: 1;
-                transform: translateX(-50%) scaleX(1);
-            }
+            color: vars.$color-text-secondary;
 
             &.active {
-                font-weight: vars.$font-weight-bold;
                 color: vars.$color-accent-sage;
-
-                &::after {
-                    background-color: vars.$color-accent-sage;
-                    opacity: 1;
-                }
             }
+        }
+    }
+
+    .hamburger {
+        display: none;
+        flex-direction: column;
+        justify-content: space-between;
+        width: 24px;
+        height: 18px;
+        background: none;
+        border: none;
+        cursor: pointer;
+        padding: 0;
+
+        .bar {
+            height: 3px;
+            width: 100%;
+            background-color: vars.$color-text-secondary;
+            border-radius: 2px;
+            transition: all 0.3s ease;
+        }
+
+        @include mixins.mobile {
+            display: flex;
+        }
+    }
+
+    &.drawer-open {
+        .nav-links {
+            display: flex;
+        }
+
+        .hamburger .bar:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 5px);
+        }
+
+        .hamburger .bar:nth-child(2) {
+            opacity: 0;
+        }
+
+        .hamburger .bar:nth-child(3) {
+            transform: rotate(-45deg) translate(5px, -5px);
         }
     }
 }

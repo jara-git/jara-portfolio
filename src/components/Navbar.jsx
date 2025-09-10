@@ -1,15 +1,15 @@
-import React, { useEffect, useState } from 'react';
-import { useLocation } from 'react-router-dom';
+import React, { useState } from 'react';
+import { Link, useLocation } from 'react-router-dom';
 import '../styles/Navbar.scss';
 import Monogram from './Monogram';
-import { HashLink as Link } from 'react-router-hash-link';
 
 function Navbar() {
     const location = useLocation();
     const [activeSection, setActiveSection] = useState('');
+    const [drawerOpen, setDrawerOpen] = useState(false);
 
-    useEffect(() => {
-        // Only for the main page
+    // Actualiza sección activa
+    React.useEffect(() => {
         if (location.pathname === '/') {
             const handleScroll = () => {
                 const scrollY = window.scrollY;
@@ -23,29 +23,39 @@ function Navbar() {
                 }
                 setActiveSection(current);
             };
-
             window.addEventListener('scroll', handleScroll);
             handleScroll();
-
             return () => window.removeEventListener('scroll', handleScroll);
         } else {
-            // For separate routes, activate the route name.
             setActiveSection(location.pathname.replace('/', ''));
         }
     }, [location]);
 
     return (
-        <nav className="navbar">
-            <a href="/" className="logo">
-                <Monogram />
-            </a>
-            <div className="nav-links">
-                <a href="/" className={activeSection === '' ? 'active' : ''}>Home</a>
-                <Link to="/#about" className={activeSection === 'about' ? 'active' : ''}>About</Link>
-                <Link to="/#projects" className={activeSection === 'projects' ? 'active' : ''}>Projects</Link>
-                <a href="/playground" className={activeSection === 'playground' ? 'active' : ''}>Playground</a>
-                <Link to="/#contact" className={activeSection === 'contact' ? 'active' : ''}>Contact</Link>
+        <nav className={`navbar ${drawerOpen ? 'drawer-open' : ''}`}>
+            <div className="navbar-left">
+                <Link to="/" className="logo">
+                    <Monogram />
+                </Link>
             </div>
+
+            <div className="nav-links">
+                <Link to="/" className={activeSection === '' ? 'active' : ''}>Home</Link>
+                <a href="#about" className={activeSection === 'about' ? 'active' : ''}>About</a>
+                <a href="#projects" className={activeSection === 'projects' ? 'active' : ''}>Projects</a>
+                <Link to="/playground" className={activeSection === 'playground' ? 'active' : ''}>Playground</Link>
+                <a href="#contact" className={activeSection === 'contact' ? 'active' : ''}>Contact</a>
+            </div>
+
+            <button
+                className="hamburger"
+                onClick={() => setDrawerOpen(prev => !prev)}
+                aria-label="Toggle menu"
+            >
+                <span className="bar" />
+                <span className="bar" />
+                <span className="bar" />
+            </button>
         </nav>
     );
 }
