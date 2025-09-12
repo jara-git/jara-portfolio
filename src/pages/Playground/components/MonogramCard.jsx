@@ -1,15 +1,12 @@
 import React, { useState } from "react";
-import MonogramPT from "./MonogramPT";
 import "./MonogramCard.scss";
+import GenerativeMonogramPT from "./GenerativeMonogramPT";
 
 const MonogramCard = () => {
-    const [headX, setHeadX] = useState(140);
-    const [headY, setHeadY] = useState(60);
     const [armRot, setArmRot] = useState(0);
-    const [armCurve, setArmCurve] = useState(0);
+    const [armBend, setArmBend] = useState(0);   // 👈 rango -30 a 10, valor inicial 0
     const [legRot, setLegRot] = useState(0);
-    const [bodyX, setBodyX] = useState(138);
-    const [bodyY, setBodyY] = useState(100);
+    const [headRot, setHeadRot] = useState(0);
     const [round, setRound] = useState(8);
     const [strokeWidth, setStrokeWidth] = useState(2);
     const [fillColor, setFillColor] = useState("#0a0a0a");
@@ -18,12 +15,10 @@ const MonogramCard = () => {
     const [showControls, setShowControls] = useState(true);
 
     const randomize = () => {
-        setHeadX(Math.floor(Math.random() * 101) + 100);
-        setHeadY(Math.floor(Math.random() * 91) + 30);
-        setArmRot(Math.floor(Math.random() * 41) - 20);
-        setLegRot(Math.floor(Math.random() * 26) - 10);
-        setBodyX(Math.floor(Math.random() * 101) + 100);
-        setBodyY(Math.floor(Math.random() * 61) + 80);
+        setArmRot(Math.floor(Math.random() * 51) - 20);
+        setLegRot(Math.floor(Math.random() * 56) - 50);
+        setArmBend(Math.floor(Math.random() * 41) - 30); // rango -30 a 10
+        setHeadRot(Math.floor(Math.random() * 61) - 30);
         setRound(Math.floor(Math.random() * 31));
         setStrokeWidth(Math.floor(Math.random() * 6));
         setFillColor(
@@ -32,7 +27,6 @@ const MonogramCard = () => {
         setStrokeColor(
             "#" + Math.floor(Math.random() * 16777215).toString(16).padStart(6, "0")
         );
-        setArmCurve(Math.floor(Math.random() * 51));
         setFontVariant(
             ["none", "futura", "oswald", "helvetica", "bodoni"][
             Math.floor(Math.random() * 5)
@@ -43,31 +37,24 @@ const MonogramCard = () => {
     return (
         <div className="monogram-pt">
             <div className="monogram-pt-container">
-                {/* Bloque visual del monograma */}
                 <div className="monogram-pt-visual">
-                    <MonogramPT
-                        headX={headX}
-                        headY={headY}
+                    <GenerativeMonogramPT
                         armRot={armRot}
-                        armCurve={armCurve}
+                        armBend={armBend}
                         legRot={legRot}
-                        bodyX={bodyX}
-                        bodyY={bodyY}
-                        round={round}
+                        headRot={headRot}
                         strokeWidth={strokeWidth}
                         fillColor={fillColor}
                         strokeColor={strokeColor}
-                        fontVariant={fontVariant}
                     />
                 </div>
 
-                {/* Bloque info: descripción, controles y botones */}
                 <div className="monogram-pt-info">
                     <p className="monogram-desc">
                         This experiment is a <strong>dynamic monogram</strong> created for a{" "}
                         <em>flamenco and contemporary dancer</em> who combines her artistic
                         practice with experimental projects. The parameterised shapes (head,
-                        arms, legs and body) allow us to explore movement, expressiveness and
+                        arms, legs) allow us to explore movement, expressiveness and
                         continuous variation, as a metaphor for dancing in constant
                         transformation.
                     </p>
@@ -75,75 +62,49 @@ const MonogramCard = () => {
                     {showControls && (
                         <div className="monogram-controls">
                             <label>
-                                Head X
-                                <input
-                                    type="range"
-                                    min="100"
-                                    max="200"
-                                    value={headX}
-                                    onChange={(e) => setHeadX(+e.target.value)}
-                                />
-                            </label>
-                            <label>
-                                Head Y
-                                <input
-                                    type="range"
-                                    min="30"
-                                    max="120"
-                                    value={headY}
-                                    onChange={(e) => setHeadY(+e.target.value)}
-                                />
-                            </label>
-                            <label>
                                 Arm bend
                                 <input
                                     type="range"
-                                    min="0"
-                                    max="50"
-                                    value={armCurve}
-                                    onChange={(e) => setArmCurve(+e.target.value)}
+                                    min="-30"
+                                    max="15"
+                                    value={armBend}
+                                    onChange={(e) => setArmBend(+e.target.value)}
                                 />
                             </label>
+
                             <label>
                                 Arm rotation
                                 <input
                                     type="range"
-                                    min="-20"
-                                    max="20"
+                                    min="-60"
+                                    max="50"
                                     value={armRot}
                                     onChange={(e) => setArmRot(+e.target.value)}
                                 />
                             </label>
+
                             <label>
                                 Leg rotation
                                 <input
                                     type="range"
-                                    min="-10"
-                                    max="15"
+                                    min="-45"
+                                    max="45"
                                     value={legRot}
                                     onChange={(e) => setLegRot(+e.target.value)}
                                 />
                             </label>
+
                             <label>
-                                Body X
+                                Head rotation
                                 <input
                                     type="range"
-                                    min="100"
-                                    max="200"
-                                    value={bodyX}
-                                    onChange={(e) => setBodyX(+e.target.value)}
+                                    min="-30"
+                                    max="30"
+                                    value={headRot}
+                                    onChange={(e) => setHeadRot(+e.target.value)}
                                 />
                             </label>
-                            <label>
-                                Body Y
-                                <input
-                                    type="range"
-                                    min="80"
-                                    max="140"
-                                    value={bodyY}
-                                    onChange={(e) => setBodyY(+e.target.value)}
-                                />
-                            </label>
+
                             <label>
                                 Rounding (0–30%)
                                 <input
@@ -154,6 +115,7 @@ const MonogramCard = () => {
                                     onChange={(e) => setRound(+e.target.value)}
                                 />
                             </label>
+
                             <label>
                                 Stroke thickness
                                 <input
@@ -164,6 +126,7 @@ const MonogramCard = () => {
                                     onChange={(e) => setStrokeWidth(+e.target.value)}
                                 />
                             </label>
+
                             <label>
                                 Fill color
                                 <input
@@ -172,6 +135,7 @@ const MonogramCard = () => {
                                     onChange={(e) => setFillColor(e.target.value)}
                                 />
                             </label>
+
                             <label>
                                 Stroke color
                                 <input
@@ -180,6 +144,7 @@ const MonogramCard = () => {
                                     onChange={(e) => setStrokeColor(e.target.value)}
                                 />
                             </label>
+
                             <label>
                                 Typography
                                 <select
